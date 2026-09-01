@@ -24,7 +24,7 @@
   --ink:#ece5f4;
   --dim:#a396bd;
   --spring:cubic-bezier(.34,1.56,.64,1);
-  --card-w:150px;
+  --card-w:208px;
 }
 *{box-sizing:border-box}
 html{background:var(--night);scroll-behavior:smooth}
@@ -103,22 +103,21 @@ hr.orn{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--li
 .tcard .sym{font-size:46px;line-height:1;margin:8px 0;color:var(--gold-hi);
   text-shadow:0 0 16px rgba(240,215,154,.55),0 0 40px rgba(124,92,196,.6)}
 .tcard .nm{font-family:'Cinzel',serif;font-size:12px;color:var(--gold-hi);letter-spacing:.4px;line-height:1.25}
-.tcard .cap{flex:0 0 auto;padding:6px 4px 7px;text-align:center;font-family:'Cinzel',serif;
-  font-size:9.5px;line-height:1.25;letter-spacing:.4px;color:var(--gold-hi);
+.tcard .cap{flex:0 0 auto;padding:8px 5px 9px;text-align:center;font-family:'Cinzel',serif;
+  font-size:12px;line-height:1.3;letter-spacing:.4px;color:var(--gold-hi);
   text-shadow:0 0 8px rgba(240,215,154,.45)}
-.tcard .cap .cr{display:block;font-size:8px;color:var(--gold);letter-spacing:2px;margin-bottom:1px}
-.tcard .cap em{font-style:normal;color:#d8a06a;font-size:8.5px}
-.tcard.rev img{transform:rotate(180deg)}
-.tcard.rev .sym{transform:rotate(180deg)}
+.tcard .cap .cr{display:block;font-size:10px;color:var(--gold);letter-spacing:2.4px;margin-bottom:2px}
+.tcard .cap em{font-style:normal;color:#d8a06a;font-size:10.5px}
+/* a lapokat sosem forgatjuk el: a fordított állást csak a felirat jelzi */
 .tcard.back .inner{background:radial-gradient(circle at 50% 50%,#2e2140,#150e26 70%)}
 .tcard.pick{cursor:pointer;transition:transform .5s var(--spring),box-shadow .3s}
 .tcard.pick:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 20px 44px rgba(124,92,196,.5)}
 .backart{width:100%;height:100%;display:block}
 
 /* vetés */
-.spread{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.spread{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:6px}
 .slot{text-align:center}
-.slot .lbl{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2px;color:var(--amber);margin-bottom:7px}
+.slot .lbl{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:2.2px;color:var(--amber);margin-bottom:9px}
 .deck{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:18px 0 4px}
 .mini{width:44px;height:70px;border-radius:6px;border:1px solid rgba(198,163,92,.35);
   background:repeating-linear-gradient(45deg,#241a3c 0 6px,#1a1230 6px 12px);cursor:pointer;
@@ -288,7 +287,7 @@ footer.site{border-top:1px solid var(--line);background:#0a0713;margin-top:34px;
 
 /* ===== MOBIL ===== */
 @media(max-width:640px){
-  :root{--card-w:98px}
+  :root{--card-w:min(230px,68vw)}
   body{font-size:15.5px;padding-bottom:70px}
   .wrap{padding:0 12px}
   .grid{margin-top:16px;gap:14px}
@@ -310,11 +309,12 @@ footer.site{border-top:1px solid var(--line);background:#0a0713;margin-top:34px;
   .hero p{font-size:14.5px}
   .keywords{justify-content:center}
 
-  .spread{gap:8px}
-  .slot .lbl{font-size:10.5px;letter-spacing:1.1px;margin-bottom:5px}
-  .tcard .cap{font-size:8px;padding:5px 3px 6px}
-  .tcard .cap .cr{font-size:7px;letter-spacing:1.4px}
-  .tcard .sym{font-size:34px}
+  .spread{flex-direction:column;align-items:center;gap:20px;flex-wrap:nowrap}
+  .slot{width:100%;display:flex;flex-direction:column;align-items:center}
+  .slot .lbl{font-size:12.5px;letter-spacing:1.8px;margin-bottom:7px}
+  .tcard .cap{font-size:12px;padding:7px 4px 8px}
+  .tcard .cap .cr{font-size:10px;letter-spacing:2px}
+  .tcard .sym{font-size:52px}
   .deck{gap:4px;margin:14px 0 2px}
   .mini{width:34px;height:54px;font-size:12px}
   #reading{padding:15px 13px}
@@ -363,7 +363,7 @@ footer.site{border-top:1px solid var(--line);background:#0a0713;margin-top:34px;
 }
 
 @media(max-width:380px){
-  :root{--card-w:88px}
+  :root{--card-w:min(215px,74vw)}
   .zgrid{grid-template-columns:repeat(2,1fr)}
   .shop{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr}
