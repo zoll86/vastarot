@@ -11,6 +11,13 @@ totális összemosása. Statikus HTML, nincs backend, nincs adatgyűjtés, semmi
     js/app.js       – logika (vetés, orákulum, szkenner, aura-főkönyv, naptár…)
     kepek/          – a 22 lap eredeti PNG-je (00–21, nagy felbontás)
     kepek/web/      – ugyanezek webre optimalizálva (JPG, ~130 KB/db) – az oldal EZEKET használja
+    kepek/og.jpg    – közösségi előnézeti kép (Facebook/Messenger megosztáshoz)
+    404.html        – a Kapuőr 404-es oldala (GitHub Pages automatikusan használja)
+
+## Megosztható dolgok
+
+Minden lapnak saját linkje van: `#lap-15` = XV. Az Ego. A vetés, a rontás, a kvíz-eredmény és az oklevél
+megosztógombja a Web Share API-t használja (mobilon), asztali gépen vágólapra másol.
 
 ## Tartalom szerkesztése
 

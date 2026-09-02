@@ -332,6 +332,169 @@ $('#gloss').innerHTML=GLOSS.map(function(g){return '<div class="gl rv"><b>'+esc(
 $('#faq').innerHTML=FAQ.map(function(f){return '<details><summary>'+esc(f.q)+'</summary><p>'+esc(f.a)+'</p></details>'}).join('');
 $('#topread').innerHTML=TOPREAD.map(function(t){return '<li><a href="'+t.h+'">'+esc(t.t)+'</a><span class="dat">'+esc(t.m)+'</span></li>'}).join('');
 
+/* ---------- megosztás ---------- */
+var SITE='https://zoll86.github.io/vastarot/';
+function share(text,hashPart){
+  var url=SITE+(hashPart?'#'+hashPart:'');
+  var full=text+'\n'+url;
+  if(navigator.share){navigator.share({title:'Anubisz Vaskapuja',text:text,url:url}).catch(function(){});return;}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(full).then(function(){toast('Vágólapra másolva. Illeszd be a csoportba, a rezgés megy vele.')},function(){toast(full)});
+  }else toast(full);
+}
+var todayCard=(function(){var idx=hash(dayKey)%LAPOK.length,rev=hash(dayKey+7)%100<32;return {L:LAPOK[idx],rev:rev}})();
+$('#dcShare').addEventListener('click',function(){
+  share('A mai vastarot-lapom: '+todayCard.L.r+' '+todayCard.L.n+(todayCard.rev?' (fordítva)':'')+'. „'+(todayCard.rev?todayCard.L.d:todayCard.L.u).split('. ')[0]+'.” — Anubisz Vaskapuja','napilap');
+});
+$('#curseShare').addEventListener('click',function(){
+  share('Rontásvizsgálat eredménye: '+$('#curseName').textContent+' ('+$('#sev').textContent+'). Ellenszer: '+$('#curseCure').textContent.replace('Ellenszer: ','')+' — Anubisz Vaskapuja','diagnosztika');
+});
+/* vetés megosztása: a reading végére gomb */
+(function(){
+  var orig=interpret;
+  interpret=function(){
+    orig();
+    var r=$('#reading');
+    var b=document.createElement('div');b.className='share';
+    b.innerHTML='<button class="btn ghost sm" id="spreadShare">Megosztom a vetésem</button>';
+    r.appendChild(b);
+    $('#spreadShare').addEventListener('click',function(){
+      var names=picked.map(function(c){return c.L.r+' '+c.L.n+(c.rev?' (ford.)':'')});
+      share('A heti vetésem: '+names[0]+' · '+names[1]+' · '+names[2]+'. '+$('.verdict',r).textContent.replace('Az együttállás: ','')+' — Anubisz Vaskapuja','vetes');
+    });
+  };
+})();
+
+/* ---------- modal ---------- */
+function openModal(id){$('#'+id).classList.add('on');document.body.style.overflow='hidden'}
+function closeModals(){$$('.modal').forEach(function(m){m.classList.remove('on')});document.body.style.overflow='';
+  if(location.hash.indexOf('#lap-')===0)history.replaceState(null,'',location.pathname+location.search)}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeModals();
+  if($('#lapModal').classList.contains('on')){if(e.key==='ArrowRight')showLap((curLap+1)%22);if(e.key==='ArrowLeft')showLap((curLap+21)%22);}
+});
+$$('.modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-close]'))closeModals()})});
+
+/* ---------- pakli galéria ---------- */
+var curLap=0;
+function showLap(i){
+  curLap=i;var L=LAPOK[i];
+  $('#lapBox').innerHTML='<div class="pic"><img src="'+imgPath(i)+'" alt="'+esc(L.n)+'"></div>'+
+    '<div class="txt"><div class="rn">'+L.r+' · elem: '+esc(L.el)+'</div><h3>'+esc(L.n)+'</h3>'+
+    '<div>'+L.k.map(function(k){return '<span class="kw">'+esc(k)+'</span>'}).join('')+'</div>'+
+    '<h4>Egyenes állás</h4><p>'+esc(L.u)+'</p>'+
+    '<h4>Fordított állás</h4><p>'+esc(L.d)+'</p>'+
+    '<h4>Szertartás</h4><p>'+esc(L.rit)+'</p>'+
+    '<h4>Kísérő kristály</h4><p>'+esc(L.cr)+'</p>'+
+    '<div class="navrow"><button class="btn ghost sm" id="lapPrev">‹ Előző</button>'+
+    '<button class="btn ghost sm" id="lapShare">Megosztom</button>'+
+    '<button class="btn ghost sm" id="lapNext">Következő ›</button></div></div>';
+  $('#lapPrev').addEventListener('click',function(){showLap((i+21)%22)});
+  $('#lapNext').addEventListener('click',function(){showLap((i+1)%22)});
+  $('#lapShare').addEventListener('click',function(){share(L.r+' '+L.n+' — „'+L.u.split('. ')[0]+'.” Vastarot, Anubisz Vaskapuja','lap-'+i)});
+  history.replaceState(null,'',location.pathname+location.search+'#lap-'+i);
+  openModal('lapModal');
+  $('#lapModal .box').scrollTop=0;
+}
+$('#gallery').innerHTML=LAPOK.map(function(L,i){
+  return '<div class="gcard rv" role="button" tabindex="0" data-lap="'+i+'" aria-label="'+esc(L.n)+'"><img src="'+imgPath(i)+'" alt="" loading="lazy"><div class="cap"><small>'+L.r+'</small>'+esc(L.n)+'</div></div>';
+}).join('');
+$('#gallery').addEventListener('click',function(e){var g=e.target.closest('.gcard');if(g)showLap(parseInt(g.getAttribute('data-lap'),10))});
+$('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gcard');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showLap(parseInt(g.getAttribute('data-lap'),10))}});
+(function(){var m=location.hash.match(/^#lap-(\d+)$/);if(m){var i=parseInt(m[1],10);if(i>=0&&i<22)setTimeout(function(){showLap(i)},300)}})();
+
+/* ---------- kvíz ---------- */
+(function(){
+  var box=$('#quiz'),step=0,score=[];
+  function reset(){step=0;score=[];for(var i=0;i<22;i++)score.push(0);render();}
+  function render(){
+    if(step>=QUIZ.length)return result();
+    var q=QUIZ[step];
+    box.innerHTML='<div class="qprog">'+QUIZ.map(function(_,i){return '<i class="'+(i<step?'done':'')+'"></i>'}).join('')+'</div>'+
+      '<div class="mute small cond" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">'+(step+1)+'. kérdés a '+QUIZ.length+'-ből</div>'+
+      '<div class="qq">'+esc(q.q)+'</div>'+
+      q.a.map(function(a,ai){return '<button class="qa" data-a="'+ai+'">'+esc(a.t)+'</button>'}).join('');
+    $$('.qa',box).forEach(function(b){b.addEventListener('click',function(){
+      q.a[parseInt(b.getAttribute('data-a'),10)].c.forEach(function(ci,k){score[ci]+=k===0?3:2});
+      step++;render();
+    })});
+  }
+  function result(){
+    var best=0;for(var i=1;i<22;i++)if(score[i]>score[best])best=i;
+    var L=LAPOK[best];
+    box.innerHTML='<div class="qres"><div class="tcard" id="qCard"></div><div>'+
+      '<div class="eyebrow">A vetés eredménye</div><h3 style="font-size:26px;margin-bottom:8px">'+L.r+' — '+esc(L.n)+'</h3>'+
+      '<div style="margin-bottom:10px">'+L.k.map(function(k){return '<span class="kw">'+esc(k)+'</span>'}).join('')+'</div>'+
+      '<p style="font-size:15.5px">'+esc(L.u)+'</p>'+
+      '<div class="ritual"><b>Előírt szertartás</b>'+esc(L.rit)+'</div>'+
+      '<div class="share"><button class="btn sm" id="qShare">Megosztom, melyik lap vagyok</button><button class="btn ghost sm" id="qAgain">Újra</button></div>'+
+      '</div></div>';
+    drawCard($('#qCard'),L,false);
+    $('#qShare').addEventListener('click',function(){share('Az Intézet szerint én '+L.r+' '+L.n+' vagyok: '+L.k.join(', ')+'. Te melyik vastarot-lap vagy?','kviz')});
+    $('#qAgain').addEventListener('click',reset);
+  }
+  reset();
+})();
+
+/* ---------- tárcsa-numerológia ---------- */
+(function(){
+  function digitSum(n){var s=String(n).replace(/[^0-9]/g,'').split('').reduce(function(a,b){return a+parseInt(b,10)},0);return s}
+  function toLap(kg){var s=digitSum(kg);while(s>21)s=digitSum(s);return s}
+  function fmtKg(k){return String(Math.round(k*100)/100).replace('.',',')}
+  function run(){
+    var v=parseFloat(String($('#numIn').value).replace(',','.'));
+    if(isNaN(v)||v<0){toast('Írj be egy súlyt. A rúd üresen is 20 kiló, és az is egy lap.');return;}
+    var i=toLap(v),L=LAPOK[i];
+    var digits=String(v).replace('.',',').replace(/[^0-9]/g,'').split('').join(' + ');
+    var s=digitSum(v),chain=digits+' = '+s;if(s>21){chain+=' → '+String(s).split('').join(' + ')+' = '+toLap(v)}
+    var good=NUM_JO.indexOf(i)>-1;
+    var alt='',best=null;
+    if(!good){for(var d=2.5;d<=20;d+=2.5){[v+d,v-d].forEach(function(w){if(best===null&&w>=0&&NUM_JO.indexOf(toLap(w))>-1)best={w:w,d:w-v}})}
+      if(best)alt='<div class="ritual"><b>Az Intézet javaslata</b>'+(best.d>0?'Rakj fel ':'Vegyél le ')+fmtKg(Math.abs(best.d))+' kilót: '+fmtKg(best.w)+' kg = '+LAPOK[toLap(best.w)].r+' '+esc(LAPOK[toLap(best.w)].n)+'. A tested nem veszi észre, a rúd igen.</div>';}
+    $('#numOut').innerHTML='<div class="eq">'+fmtKg(v)+' kg → '+chain+'</div><div class="big">'+L.r+' — '+esc(L.n)+'</div>'+
+      '<p style="margin:0">'+esc(good?L.u:L.d)+'</p>'+(good?'<div class="conf">Kedvező tárcsa-állás — emelhetsz</div>':'<div class="conf" style="border-color:var(--blood-hi);color:var(--blood-hi)">Kedvezőtlen tárcsa-állás</div>')+alt;
+  }
+  $('#numBtn').addEventListener('click',run);
+  $('#numIn').addEventListener('keydown',function(e){if(e.key==='Enter')run()});
+})();
+
+/* ---------- oklevél ---------- */
+(function(){
+  $('#certRank').innerHTML=DIPLOMA.map(function(d){return '<option>'+esc(d)+'</option>'}).join('');
+  var lastName='',lastRank='';
+  function make(){
+    var n=$('#certName').value.trim()||'Névtelen Emelő';var r=$('#certRank').value;lastName=n;lastRank=r;
+    var no='ANK-'+now.getFullYear()+'-'+String(hash(n.length*131+r.length*17+dayKey)%9000+1000);
+    $('#certBox').innerHTML='<div class="inst">Anubisz Vaskapuja · Erőezotéria és Vastarot Intézet · alapítva 1351</div>'+
+      '<h3>Oklevél</h3><div class="sub">amely tanúsítja, hogy</div>'+
+      '<div class="name">'+esc(n)+'</div>'+
+      '<div class="rank">'+esc(r)+'</div>'+
+      '<p>fokozatot ért el, miután az Intézet a szauna felső padján megvizsgálta auráját, tárcsa-karmáját és a harmadik sorozat utáni gondolatait, és mindent rendben talált, vagy legalábbis rezgőnek.</p>'+
+      '<p>Az oklevél a rúd előtt érvényes, a tudomány előtt nem, a Kapuőr előtt csak hajnalban.</p>'+
+      '<div class="sig"><div><b>Főmagnéziás</b>a szentelt kréta őrzője</div><div><b>Kapuőr</b>nem tud róla, hogy aláírt</div></div>'+
+      '<div class="date">Kelt: '+now.getFullYear()+'. '+HO[now.getMonth()]+' '+now.getDate()+'. · holdfázis: '+MOONS[mi][1].toLowerCase()+' · sorszám: '+no+'</div>';
+    openModal('certModal');
+  }
+  $('#certBtn').addEventListener('click',make);
+  $('#certName').addEventListener('keydown',function(e){if(e.key==='Enter')make()});
+  $('#certPrint').addEventListener('click',function(){window.print()});
+  $('#certShare').addEventListener('click',function(){share(lastName+' a mai naptól hivatalosan '+lastRank+' — az Anubisz Vaskapuja Erőezotéria és Vastarot Intézet oklevelével.','akademia')});
+})();
+
+/* ---------- aktív nav + vissza a tetejére + logó ---------- */
+(function(){
+  var links=$$('nav.main a'),map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.remove('active')});var a=map[x.target.id];if(a)a.classList.add('active')}})},{rootMargin:'-30% 0px -60% 0px'});
+  $$('section[id]').forEach(function(s){io.observe(s)});
+  var tt=$('#totop');
+  window.addEventListener('scroll',function(){tt.classList.toggle('on',window.scrollY>900)},{passive:true});
+  tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  var clicks=0;$('.mark').addEventListener('click',function(){clicks++;if(clicks===5){toast('Ötször érintetted az ankh-ot. A Kapuőr feljegyezte: beavatott vagy. Mind meg fogjuk csinálni.');clicks=0;}});
+  /* billentyűzet a jegyekhez és a paklihoz */
+  $$('.z').forEach(function(z){z.setAttribute('role','button');z.setAttribute('tabindex','0');z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();z.click()}})});
+})();
+
 /* ---------- interakciók ---------- */
 document.addEventListener('click',function(e){
   var f=e.target.closest('[data-fake]');

@@ -444,3 +444,49 @@ var TOPREAD=[
 {t:'A tükör-dzsinn: felismerés és kiűzés hét lépésben',h:'#diagnosztika',m:'2 hete · 8 117 rezgés'},
 {t:'Kvantum-Fehérje: ittam vagy nem ittam? Egy vásárló beszámolója',h:'#bolt',m:'3 hete · 7 733 rezgés'}
 ];
+
+/* ---------- MELYIK LAP VAGY? (kvíz) ---------- */
+var QUIZ=[
+{q:'Mi az első dolgod a teremben?',a:[
+ {t:'Bemelegítés. Nyolc perc kerékpár, unalmasan.',c:[4,2]},
+ {t:'Egyből a rúd alá. A bemelegítés a bemelegítőknek való.',c:[8,15]},
+ {t:'Tükör, telefon, story. Aztán majd valami.',c:[19,15]},
+ {t:'Megkérdezem valakitől, mire való a kék kar.',c:[0]}]},
+{q:'Mit iszol edzés közben?',a:[
+ {t:'Vizet. Néha kreatinnal, amiről nem beszélek.',c:[14,11]},
+ {t:'Három fehérjeturmixot. Egyszerre.',c:[1,3]},
+ {t:'A shaker három napja a táskában van, nem nyúlok hozzá.',c:[16,18]},
+ {t:'Amit az edzőtársam hozott.',c:[6]}]},
+{q:'Lábnap?',a:[
+ {t:'Minden héten, akkor is, ha fáj. Főleg akkor.',c:[21,4]},
+ {t:'Jövő héten biztosan.',c:[20,12]},
+ {t:'Mi az?',c:[19]},
+ {t:'A Smith-gépen számít?',c:[0,11]}]},
+{q:'Hányszor váltottál programot idén?',a:[
+ {t:'Egyszer sem. Ugyanaz négy éve, és működik.',c:[4,2]},
+ {t:'Kétszer, tervezetten, ciklus szerint.',c:[10,14]},
+ {t:'Nem tudom megszámolni.',c:[7,12]},
+ {t:'Nincs programom. Érzésre megy, hajnalban, egyedül.',c:[9,18]}]},
+{q:'Valaki a squat rackben bicepszezik. Mit teszel?',a:[
+ {t:'Csendben guggolok a szomszéd állványon. Hangosan.',c:[8]},
+ {t:'Udvariasan megkérem, hogy adja át.',c:[6,11]},
+ {t:'Lefotózom és felteszem.',c:[15,19]},
+ {t:'Hazamegyek. A nap elveszett.',c:[16,13]}]},
+{q:'Rekordkísérlet. Mi történik?',a:[
+ {t:'Sikerül, mert kialudtam magam és ettem.',c:[17,21]},
+ {t:'Nem sikerül, és ez az egész életemről szól.',c:[16]},
+ {t:'Nem kísérletezem, deloadolok. Már harmadik hete.',c:[13]},
+ {t:'Húsz kilóval többet rakok fel, mert néznek.',c:[15]}]},
+{q:'Hajnali öt, szól az ébresztő.',a:[
+ {t:'Már a teremben vagyok.',c:[9]},
+ {t:'Szundi. Aztán szundi. Aztán filozófia.',c:[18,12]},
+ {t:'Este bepakoltam a táskát az ajtó elé, tehát megyek.',c:[14,2]},
+ {t:'Az edzőtárs hív, különben nem.',c:[6,20]}]}
+];
+
+/* ---------- OKLEVELEK ---------- */
+var DIPLOMA=[
+ 'Okleveles Rúdmédium','Bro-science Doktor (PhD)','Tárcsa-numerológus Mester','Szaunapadi Látnok',
+ 'Rontáslevételi Szakreferens','A Lábnap Lovagja','Kvantum-fehérje Sommelier','Anubisz Kiválasztottja'
+];
+var NUM_JO=[4,8,17,19,21,3,11];
