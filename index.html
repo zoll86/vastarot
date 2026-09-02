@@ -3,1127 +3,394 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vastarot &amp; Erőhoroszkóp | Anubisz Vaskapuja – napi tarot, rontáslevétel, talizmánok</title>
-<meta name="description" content="Napi vastarot, erőhoroszkóp minden csillagjegyre, edzőtermi rontáslevétel és talizmánok. Szatirikus oldal.">
+<title>Anubisz Vaskapuja — Erőezotéria és Vastarot Intézet</title>
+<meta name="description" content="Napi vastarot, erőhoroszkóp, rontásvizsgálat, csakra-audit, a 9 Ősi Vastörvény és a Vas-Orákulum. Az edzőtermi ezotéria hivatalos intézete. Szatíra.">
+<meta property="og:title" content="Anubisz Vaskapuja — Erőezotéria és Vastarot Intézet">
+<meta property="og:description" content="A vas nem hazudik. Mi viszont értelmezzük. Napi lap, erőhoroszkóp, rontáslevétel, kvantum-fehérje.">
+<meta property="og:image" content="kepek/web/19.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af5a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%231d1405'%3E%E2%98%A5%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Barlow+Condensed:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --night:#0e0a18;
-  --night2:#171029;
-  --panel:#1c1430;
-  --panel2:#241a3c;
-  --line:rgba(198,163,92,.26);
-  --gold:#c6a35c;
-  --gold-hi:#f0d79a;
-  --amber:#e0913a;
-  --violet:#7c5cc4;
-  --blood:#8f3a3a;
-  --jade:#4fae8c;
-  --ink:#ece5f4;
-  --dim:#a396bd;
-  --spring:cubic-bezier(.34,1.56,.64,1);
-  --card-w:285px;
-}
-*{box-sizing:border-box}
-html{background:var(--night);scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.7;
-  background:
-   radial-gradient(1200px 700px at 80% -8%, rgba(124,92,196,.22), transparent 60%),
-   radial-gradient(900px 600px at 5% 12%, rgba(198,163,92,.10), transparent 62%),
-   linear-gradient(180deg,var(--night) 0%, var(--night2) 40%, #0b0714 100%);
-  padding-bottom:52px;overflow-x:hidden}
-h1,h2,h3,h4,.disp{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.3px;line-height:1.22;margin:0}
-.cond{font-family:'Barlow Condensed',sans-serif}
-a{color:var(--gold-hi);text-decoration:none}
-a:hover{text-decoration:underline}
-img{max-width:100%;display:block}
-
-/* csillagos háttér */
-.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-.stars i{position:absolute;background:#fff;border-radius:50%;opacity:.5;animation:tw 4s ease-in-out infinite}
-@keyframes tw{0%,100%{opacity:.15}50%{opacity:.75}}
-
-/* hullócsillag */
-.shoot{position:absolute;width:2px;height:2px;border-radius:50%;
-  background:linear-gradient(180deg,#fff,rgba(255,235,190,.9));
-  box-shadow:0 0 8px 2px rgba(255,240,205,.75);
-  opacity:0;transform-origin:top left;animation:shoot 2.1s ease-in forwards}
-.shoot::after{content:'';position:absolute;top:0;left:0;width:150px;height:1.6px;
-  transform-origin:right center;transform:translate(-150px,0) rotate(0deg);
-  background:linear-gradient(90deg,rgba(255,235,190,0),rgba(255,240,210,.85))}
-@keyframes shoot{
-  0%{opacity:0;transform:translate(0,0) rotate(var(--ang)) scale(.6)}
-  12%{opacity:1}
-  70%{opacity:1}
-  100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--ang)) scale(1)}
-}
-@media(prefers-reduced-motion:reduce){.shoot{display:none}}
-
-/* ===== FEJLÉC ===== */
-.util{background:#0a0713;border-bottom:1px solid rgba(198,163,92,.16);font-size:12.5px;color:var(--dim);position:relative;z-index:5}
-.util .in{max-width:1340px;margin:0 auto;padding:7px 18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.util b{color:var(--gold);font-weight:500}
-.util .r{display:flex;gap:16px}
-.util a{color:var(--dim)}
-
-header.site{position:relative;z-index:5;border-bottom:1px solid var(--line);background:rgba(14,10,24,.86);
-  backdrop-filter:blur(10px);position:sticky;top:0}
-.brandrow{max-width:1340px;margin:0 auto;padding:13px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.mark{width:44px;height:44px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-size:23px;color:#241a06;
-  background:radial-gradient(circle at 30% 25%,var(--gold-hi),var(--gold) 55%,#8a6a26);
-  box-shadow:0 0 22px rgba(198,163,92,.45)}
-.brand h1{font-size:20px;color:var(--gold-hi);letter-spacing:1px}
-.brand .tag{font-size:11.5px;color:var(--dim);letter-spacing:2.2px;font-family:'Barlow Condensed',sans-serif}
-nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
-nav.main a{font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.6px;color:var(--ink);
-  padding:7px 12px;border-radius:8px;transition:background .25s,color .25s}
-nav.main a:hover{background:rgba(198,163,92,.14);color:var(--gold-hi);text-decoration:none}
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--gold-hi);
-  border-radius:8px;padding:8px 12px;font-size:18px;cursor:pointer}
-
-.wrap{max-width:1340px;margin:0 auto;padding:0 18px;position:relative;z-index:2}
-.grid{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start;margin-top:26px}
-section{margin-bottom:26px;scroll-margin-top:86px}
-.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:22px}
-.card > h2{font-size:21px;color:var(--gold-hi);margin-bottom:4px}
-.sectlead{color:var(--dim);font-size:14.5px;margin:4px 0 18px}
-.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2.4px;color:var(--amber)}
-hr.orn{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:20px 0}
-
-/* ===== NAPI LAP (HERO) ===== */
-.hero{background:
-  radial-gradient(700px 340px at 78% 15%,rgba(124,92,196,.34),transparent 65%),
-  linear-gradient(180deg,#20153a,#160f28);
-  border:1px solid var(--line);border-radius:16px;padding:26px;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center}
-.hero h2{font-size:clamp(21px,3.2vw,30px);color:var(--gold-hi);margin:6px 0 8px}
-.hero p{color:#d8cee9;font-size:15.5px;margin:0 0 8px}
-.meta{font-family:'Barlow Condensed',sans-serif;font-size:14px;color:var(--dim);letter-spacing:.8px}
-.keywords{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.kw{font-size:12px;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--gold-hi);
-  background:rgba(198,163,92,.09);font-family:'Barlow Condensed',sans-serif;letter-spacing:.8px}
-
-/* ===== TAROT LAP ===== */
-.tcard{width:var(--card-w);height:calc(var(--card-w) * 1.5 + 61px);
-  border-radius:10px;position:relative;flex:0 0 auto;
-  padding:5px 5px 0;display:flex;flex-direction:column;
-  background:linear-gradient(160deg,#3a2a14 0%,#1a1226 45%,#241a0e 100%);
-  border:1px solid rgba(198,163,92,.8);
-  box-shadow:0 12px 34px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,225,170,.25)}
-.tcard .inner{position:relative;width:100%;flex:1 1 auto;min-height:0;overflow:hidden;border-radius:4px;
-  border:1px solid rgba(198,163,92,.55);background:linear-gradient(160deg,#2c1f4d,#150e26);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.tcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.tcard .fb{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
-.tcard .rn{font-family:'Cinzel',serif;font-size:12.5px;color:var(--gold);letter-spacing:1.6px}
-.tcard .sym{font-size:46px;line-height:1;margin:8px 0;color:var(--gold-hi);
-  text-shadow:0 0 16px rgba(240,215,154,.55),0 0 40px rgba(124,92,196,.6)}
-.tcard .nm{font-family:'Cinzel',serif;font-size:12px;color:var(--gold-hi);letter-spacing:.4px;line-height:1.25}
-.tcard .cap{flex:0 0 56px;height:56px;overflow:hidden;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;padding:8px 5px 9px;text-align:center;font-family:'Cinzel',serif;
-  font-size:13.5px;line-height:1.3;letter-spacing:.4px;color:var(--gold-hi);
-  text-shadow:0 0 8px rgba(240,215,154,.45)}
-.tcard .cap .cr{display:block;font-size:10px;color:var(--gold);letter-spacing:2.4px;margin-bottom:2px}
-.tcard .cap em{font-style:normal;color:#d8a06a;font-size:10.5px}
-/* a lapokat sosem forgatjuk el: a fordított állást csak a felirat jelzi */
-.tcard.back .inner{background:radial-gradient(circle at 50% 50%,#2e2140,#150e26 70%)}
-.tcard.pick{cursor:pointer;transition:transform .5s var(--spring),box-shadow .3s}
-.tcard.pick:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:0 20px 44px rgba(124,92,196,.5)}
-.backart{width:100%;height:100%;display:block}
-
-/* vetés */
-.spread{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:flex-start;margin-top:10px}
-.slot{text-align:center;flex:0 0 auto}
-.slot .lbl{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:2.2px;color:var(--amber);margin-bottom:9px}
-.deck{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:18px 0 4px}
-.mini{width:44px;height:70px;border-radius:6px;border:1px solid rgba(198,163,92,.35);
-  background:repeating-linear-gradient(45deg,#241a3c 0 6px,#1a1230 6px 12px);cursor:pointer;
-  display:grid;place-items:center;color:rgba(198,163,92,.6);font-size:15px;
-  transition:transform .45s var(--spring),border-color .25s}
-.mini:hover{transform:translateY(-7px);border-color:var(--gold-hi)}
-.mini.used{opacity:.22;pointer-events:none;transform:none}
-#reading{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:20px;background:rgba(10,7,19,.5);display:none}
-#reading.on{display:block;animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#reading h3{font-size:18px;color:var(--gold-hi);margin-bottom:10px}
-#reading p{margin:0 0 11px;font-size:15px}
-.verdict{margin-top:14px;padding:13px 15px;border-left:3px solid var(--amber);background:rgba(224,145,58,.09);
-  border-radius:0 10px 10px 0;font-size:14.5px}
-
-/* ===== HOROSZKÓP ===== */
-.zgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:9px}
-.z{cursor:pointer;border:1px solid var(--line);border-radius:11px;padding:12px 6px;text-align:center;background:rgba(10,7,19,.4);
-  transition:transform .45s var(--spring),background .25s,border-color .25s}
-.z:hover{transform:translateY(-5px);border-color:var(--gold);background:rgba(198,163,92,.12)}
-.z.active{background:linear-gradient(180deg,rgba(198,163,92,.28),rgba(124,92,196,.2));border-color:var(--gold-hi)}
-.z .sym{font-size:25px;display:block;color:var(--gold-hi)}
-.z .nm{font-size:13px;font-family:'Cinzel',serif;display:block;margin-top:3px}
-.z .dt{font-size:10.5px;color:var(--dim);font-family:'Barlow Condensed',sans-serif}
-#zout{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:18px;background:rgba(10,7,19,.5);display:none}
-#zout.on{display:block;animation:fade .45s ease}
-.zline{display:flex;gap:12px;padding:8px 0;border-bottom:1px dotted rgba(198,163,92,.18);font-size:14.5px}
-.zline:last-child{border:0}
-.zline span:first-child{font-family:'Barlow Condensed',sans-serif;letter-spacing:1.4px;font-size:13px;color:var(--amber);min-width:118px;flex:0 0 auto;padding-top:3px}
-.bar{height:7px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:7px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blood),var(--amber),var(--jade))}
-
-/* ===== RONTÁS ===== */
-.scanbar{height:9px;border-radius:99px;background:rgba(0,0,0,.5);border:1px solid var(--line);overflow:hidden;margin:16px 0 9px}
-.scanfill{height:100%;width:0;background:linear-gradient(90deg,var(--blood),var(--amber),var(--jade));transition:width .22s linear}
-.btn{font-family:'Barlow Condensed',sans-serif;font-size:17px;letter-spacing:1.2px;border:none;cursor:pointer;
-  padding:12px 26px;border-radius:9px;color:#241a06;
-  background:linear-gradient(180deg,var(--gold-hi),var(--gold) 58%,#9c7a2e);
-  box-shadow:0 8px 22px rgba(198,163,92,.28);transition:transform .45s var(--spring),box-shadow .25s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(198,163,92,.45)}
-.btn:active{transform:scale(.97)}
-.btn.ghost{background:transparent;color:var(--gold-hi);border:1px solid var(--line);box-shadow:none}
-.btn.sm{padding:9px 16px;font-size:15px}
-#result{margin-top:16px;border:1px solid rgba(143,58,58,.5);border-radius:12px;padding:18px;background:rgba(143,58,58,.1);display:none}
-#result.on{display:block;animation:fade .45s ease}
-#result h3{color:#ffa88c;font-size:19px}
-.sev{display:inline-block;font-family:'Barlow Condensed',sans-serif;letter-spacing:1.6px;font-size:12.5px;padding:3px 10px;
-  border-radius:6px;background:rgba(143,58,58,.35);border:1px solid rgba(255,140,110,.35);color:#ffbfae;margin-bottom:8px}
-
-/* ===== NAPTÁR ===== */
-.calhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.calhead .m{font-family:'Cinzel',serif;font-size:16px;color:var(--gold-hi)}
-.nav{background:none;border:1px solid var(--line);color:var(--gold-hi);border-radius:8px;width:34px;height:34px;
-  cursor:pointer;font-size:15px;transition:transform .4s var(--spring)}
-.nav:hover{transform:scale(1.14);background:rgba(198,163,92,.14)}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.dow{text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:11.5px;color:var(--dim);padding-bottom:3px}
-.day{aspect-ratio:1;border-radius:8px;border:1px solid rgba(198,163,92,.13);background:rgba(0,0,0,.28);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-size:12.5px;
-  transition:transform .35s var(--spring),border-color .2s}
-.day.empty{border:0;background:none;cursor:default}
-.day:not(.empty):hover{transform:scale(1.1);border-color:var(--gold)}
-.day .dot{font-size:9px;margin-top:1px}
-.day.good{border-color:rgba(79,174,140,.45)}
-.day.bad{border-color:rgba(143,58,58,.6)}
-.day.today{box-shadow:0 0 0 2px var(--gold-hi) inset}
-.day.sel{background:rgba(198,163,92,.22)}
-#calout{margin-top:13px;font-size:14px;color:var(--dim);border-top:1px dotted rgba(198,163,92,.2);padding-top:12px}
-#calout b{color:var(--gold-hi)}
-
-/* ===== BOLT ===== */
-.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.prod{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:rgba(10,7,19,.45);display:flex;flex-direction:column;
-  transition:transform .45s var(--spring),border-color .25s}
-.prod:hover{transform:translateY(-4px);border-color:var(--gold)}
-.pimg{aspect-ratio:1;display:grid;place-items:center;font-size:56px;position:relative;
-  background:radial-gradient(circle at 40% 30%,rgba(198,163,92,.28),rgba(20,13,36,.9) 70%);
-  color:var(--gold-hi);text-shadow:0 0 22px rgba(240,215,154,.55)}
-.pimg .psym{position:absolute;inset:0;display:grid;place-items:center;font-size:56px;z-index:1}
-.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
-.pimg .ribbon{z-index:3}
-.ribbon{position:absolute;top:9px;left:0;background:var(--blood);color:#ffe3d8;font-family:'Barlow Condensed',sans-serif;
-  font-size:11.5px;letter-spacing:1.4px;padding:2px 9px;border-radius:0 5px 5px 0}
-.pbody{padding:13px 14px 15px;display:flex;flex-direction:column;flex:1}
-.pbody h4{font-size:14.5px;color:var(--gold-hi);line-height:1.3}
-.pbody .d{font-size:13px;color:var(--dim);margin:6px 0 10px;flex:1}
-.stars5{color:#f0c04a;font-size:12.5px;letter-spacing:1px}
-.stars5 em{color:var(--dim);font-style:normal;font-size:11.5px;margin-left:5px}
-.price{font-family:'Barlow Condensed',sans-serif;font-size:22px;color:#fff;margin:8px 0 4px}
-.price s{font-size:14px;color:var(--dim);margin-right:7px}
-.stock{font-size:11.5px;color:var(--jade);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;margin-bottom:9px}
-.stock.low{color:#e8a13c}
-
-/* ===== VÉLEMÉNYEK ===== */
-.rev{border-bottom:1px dotted rgba(198,163,92,.18);padding:14px 0}
-.rev:last-child{border:0}
-.rev .top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
-.rev .who{font-weight:700;font-size:14.5px}
-.rev .when{font-size:12px;color:var(--dim)}
-.ok{font-size:11px;color:var(--jade);border:1px solid rgba(79,174,140,.4);border-radius:5px;padding:1px 7px;
-  font-family:'Barlow Condensed',sans-serif;letter-spacing:1px}
-.rev p{margin:6px 0 0;font-size:14.5px;color:#ded6ec}
-
-/* ===== KRÓNIKÁK ===== */
-.chron{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
-.story{border:1px solid var(--line);border-radius:12px;padding:16px;background:rgba(10,7,19,.4)}
-.story .lift{font-family:'Barlow Condensed',sans-serif;font-size:29px;color:var(--gold-hi);line-height:1}
-.story .lift small{font-size:14px;color:var(--dim);letter-spacing:1.4px}
-.story h4{font-size:15px;margin:8px 0 6px}
-.story p{margin:0;font-size:13.8px;color:var(--dim)}
-
-/* ===== OLDALSÁV ===== */
-.side .card{padding:18px;margin-bottom:18px}
-.side h3{font-size:15px;color:var(--gold-hi);letter-spacing:1px;margin-bottom:10px}
-.side ul{list-style:none;margin:0;padding:0}
-.side li{padding:8px 0;border-bottom:1px dotted rgba(198,163,92,.16);font-size:14px}
-.side li:last-child{border:0}
-.side li .dat{display:block;font-size:11.5px;color:var(--dim);font-family:'Barlow Condensed',sans-serif;letter-spacing:1px}
-.moon{text-align:center}
-.moon .big{font-size:52px;line-height:1.1}
-.moon .lab{font-family:'Cinzel',serif;font-size:15px;color:var(--gold-hi);margin-top:4px}
-.moon .sub{font-size:12.5px;color:var(--dim)}
-input.f,select.f{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.35);
-  color:var(--ink);font-family:inherit;font-size:14px;margin-bottom:9px}
-input.f:focus,select.f:focus{outline:2px solid var(--gold);outline-offset:1px}
-
-/* ===== LÁBLÉC ===== */
-footer.site{border-top:1px solid var(--line);background:#0a0713;margin-top:34px;padding:34px 0 26px;position:relative;z-index:2}
-.fgrid{max-width:1340px;margin:0 auto;padding:0 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px}
-.fgrid h4{font-size:13.5px;color:var(--gold);letter-spacing:1.4px;margin-bottom:9px}
-.fgrid a,.fgrid p{display:block;font-size:13.5px;color:var(--dim);margin:5px 0}
-.fake{max-width:1340px;margin:28px auto 0;padding:18px;border:2px solid var(--amber);border-radius:12px;
-  background:rgba(224,145,58,.09)}
-.fake h3{color:var(--amber);font-size:17px;margin-bottom:7px;letter-spacing:1px}
-.fake p{margin:0 0 8px;font-size:14px;color:#e6dcc9}
-.fake p:last-child{margin:0}
-
-#sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#1b1206;border-top:1px solid var(--amber);
-  color:#f0d09a;font-family:'Barlow Condensed',sans-serif;font-size:14.5px;letter-spacing:.8px;
-  padding:9px 16px;display:flex;gap:12px;align-items:center;justify-content:center;text-align:center}
-#sticky b{color:var(--amber);letter-spacing:2px}
-
-/* cookie */
-#cookie{position:fixed;left:16px;right:16px;bottom:60px;z-index:70;max-width:640px;margin:0 auto;
-  background:#1a1330;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
-  box-shadow:0 20px 50px rgba(0,0,0,.7);font-size:13.5px;color:var(--dim)}
-#cookie .row{display:flex;gap:9px;margin-top:11px;flex-wrap:wrap}
-
-/* toast */
-#toast{position:fixed;left:50%;bottom:64px;transform:translate(-50%,140px);z-index:80;
-  background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#241a06;padding:12px 22px;border-radius:10px;
-  font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.8px;box-shadow:0 14px 40px rgba(0,0,0,.6);
-  transition:transform .6s var(--spring);max-width:90vw;text-align:center}
-#toast.on{transform:translate(-50%,0)}
-
-@media(min-width:901px) and (max-width:1240px){
-  :root{--card-w:min(232px,calc((100vw - 458px) / 3))}
-  .spread{gap:14px}
-}
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr;gap:18px}
-  nav.main{display:none;width:100%;flex-direction:column;gap:2px;
-    margin:10px 0 4px;padding:10px;border-radius:10px;
-    background:rgba(10,7,19,.85);border:1px solid var(--line)}
-  nav.main.open{display:flex}
-  nav.main a{padding:11px 12px;font-size:17px}
-  .burger{display:block}
-  .hero{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .side{order:2}
-}
-
-/* ===== MOBIL ===== */
-@media(max-width:640px){
-  :root{--card-w:min(300px,84vw)}
-  body{font-size:15.5px;padding-bottom:70px}
-  .wrap{padding:0 12px}
-  .grid{margin-top:16px;gap:14px}
-  section{margin-bottom:16px;scroll-margin-top:74px}
-  .card{padding:16px 14px;border-radius:12px}
-  .card > h2{font-size:18px}
-  .sectlead{font-size:14px;margin-bottom:14px}
-  .eyebrow{font-size:11.5px;letter-spacing:1.8px}
-
-  .util .in{padding:6px 12px;font-size:11.5px;justify-content:center;gap:10px}
-  .util .r{gap:11px}
-  .brandrow{padding:10px 12px;gap:10px}
-  .mark{width:38px;height:38px;font-size:20px}
-  .brand h1{font-size:17px;letter-spacing:.5px}
-  .brand .tag{font-size:10px;letter-spacing:1.4px}
-
-  .hero{padding:18px 14px;gap:16px;border-radius:13px}
-  .hero h2{font-size:20px}
-  .hero p{font-size:14.5px}
-  .keywords{justify-content:center}
-
-  .spread{flex-direction:column;align-items:center;gap:20px;flex-wrap:nowrap}
-  .slot{width:100%;display:flex;flex-direction:column;align-items:center}
-  .slot .lbl{font-size:12.5px;letter-spacing:1.8px;margin-bottom:7px}
-  .tcard .cap{font-size:12px;padding:7px 4px 8px}
-  .tcard .cap .cr{font-size:10px;letter-spacing:2px}
-  .tcard .sym{font-size:52px}
-  .deck{gap:4px;margin:14px 0 2px}
-  .mini{width:34px;height:54px;font-size:12px}
-  #reading{padding:15px 13px}
-  #reading h3{font-size:16px}
-
-  .zgrid{grid-template-columns:repeat(3,1fr);gap:7px}
-  .z{padding:10px 4px}
-  .z .sym{font-size:22px}
-  .z .nm{font-size:12px}
-  .z .dt{font-size:9.5px}
-  #zout{padding:15px 13px}
-  .zline{flex-direction:column;gap:2px;padding:9px 0}
-  .zline span:first-child{min-width:0;padding-top:0;font-size:11.5px}
-
-  .cal{gap:3px}
-  .day{border-radius:6px;font-size:11.5px}
-  .day .dot{font-size:8px}
-  .dow{font-size:10px}
-
-  .shop{grid-template-columns:repeat(2,1fr);gap:10px}
-  .pbody{padding:10px 10px 12px}
-  .pbody h4{font-size:13px}
-  .pbody .d{font-size:11.5px}
-  .price{font-size:18px}
-  .prod .btn{width:100%}
-
-  .rev .top{gap:7px}
-  .rev .who{font-size:13.5px}
-  .rev p{font-size:13.5px}
-
-  .chron{grid-template-columns:1fr;gap:10px}
-  .story .lift{font-size:25px}
-
-  .side .card{padding:16px 14px;margin-bottom:14px}
-  .moon .big{font-size:44px}
-
-  .fgrid{grid-template-columns:repeat(2,1fr);gap:16px}
-  .fake{margin:20px 12px 0;padding:15px 13px}
-  .fake h3{font-size:15px}
-  .fake p{font-size:13px}
-
-  #sticky{font-size:12.5px;letter-spacing:.4px;padding:8px 12px;line-height:1.35}
-  #cookie{left:10px;right:10px;bottom:68px;padding:14px 15px;font-size:12.5px}
-  #toast{bottom:76px;font-size:15px;padding:11px 18px}
-  .btn{padding:12px 20px}
-}
-
-@media(max-width:380px){
-  :root{--card-w:min(270px,88vw)}
-  .zgrid{grid-template-columns:repeat(2,1fr)}
-  .shop{grid-template-columns:1fr}
-  .fgrid{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Barlow+Condensed:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="stars" id="stars"></div>
 
-<div class="util"><div class="in">
-  <div id="utilDate">&nbsp;</div>
-  <div class="r">
-    <span>Holdfázis: <b id="utilMoon">–</b></span>
-    <a href="#" data-fake>Belépés</a>
-    <a href="#" data-fake>Regisztráció</a>
-  </div>
-</div></div>
+<!-- ÉLŐ SZENTÉLYI HÍRFOLYAM -->
+<div class="ticker" aria-hidden="true"><div class="track" id="tickerTrack"></div></div>
 
 <header class="site">
   <div class="brandrow">
     <div class="mark">☥</div>
     <div class="brand">
       <h1>Anubisz Vaskapuja</h1>
-      <div class="tag">VASTAROT &middot; ERŐHOROSZKÓP &middot; RONTÁSLEVÉTEL</div>
+      <div class="tag">Erőezotéria és Vastarot Intézet · alapítva 1351</div>
     </div>
     <button class="burger" id="burger" aria-label="Menü">☰</button>
     <nav class="main" id="nav">
       <a href="#napilap">Napi lap</a>
-      <a href="#vetes">Háromlapos vetés</a>
-      <a href="#horoszkop">Erőhoroszkóp</a>
-      <a href="#rontas">Rontásvizsgálat</a>
-      <a href="#naptar">Naptár</a>
-      <a href="#bolt">Talizmánbolt</a>
-      <a href="#kronika">Krónikák</a>
-      <a href="#impresszum">Impresszum</a>
+      <a href="#vetes">Vetés</a>
+      <a href="#orakulum">Orákulum</a>
+      <a href="#horoszkop">Horoszkóp</a>
+      <a href="#diagnosztika">Diagnosztika</a>
+      <a href="#vastorveny">Vastörvények</a>
+      <a href="#aura">Aura</a>
+      <a href="#akademia">Akadémia</a>
+      <a href="#bolt">Bolt</a>
+      <a href="#tudomany">Tudomány</a>
+      <a href="#gyik">GYIK</a>
     </nav>
   </div>
 </header>
 
-<div class="wrap">
-<div class="grid">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap in">
+    <div>
+      <div class="eyebrow"><span id="utilDate">&nbsp;</span> · Holdfázis: <span id="utilMoon">–</span></div>
+      <h2>A vas nem hazudik.<br><em>Mi viszont értelmezzük.</em></h2>
+      <p class="lead">Az Intézet ott kezdődik, ahol a sporttudomány véget ér: a negyedik sorozatnál. Napi vastarot, erőhoroszkóp, rontáslevétel, csakra-audit és kvantum-fehérje — mindaz, amit az edzőterem sosem kért, de a rúd mindig is tudott.</p>
+      <div class="cta">
+        <a href="#vetes" class="btn">Húzz három lapot</a>
+        <a href="#diagnosztika" class="btn ghost">Rontásvizsgálat</a>
+      </div>
+      <div class="motto">A szentély mantrája: <b>Mind meg fogjuk csinálni.</b> A vas ezt nem ígéri — mi viszont igen.</div>
+    </div>
+    <div class="herocard">
+      <div class="halo2"></div>
+      <div class="halo"></div>
+      <div class="tcard" id="heroCard"><div class="inner"></div><div class="cap">&nbsp;</div></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats" id="stats">
+      <div class="stat"><div class="n count" id="statLifted" data-to="1248913">0</div><div class="l">Levett rontás</div></div>
+      <div class="stat"><div class="n count" data-to="22">0</div><div class="l">Szent lap</div></div>
+      <div class="stat"><div class="n count" data-to="0">0</div><div class="l">Klinikai vizsgálat</div></div>
+      <div class="stat"><div class="n count" data-to="100">0</div><div class="l">% természetes rezgés</div></div>
+    </div>
+  </div>
+</section>
 
-<main>
+<div class="press"><div class="wrap in" id="press"></div></div>
 
-  <!-- NAPI LAP -->
-  <section id="napilap">
-    <div class="hero">
+<!-- NAPI LAP -->
+<section id="napilap">
+  <div class="wrap">
+    <div class="daily">
       <div class="tcard" id="dayCard"><div class="inner"></div><div class="cap">&nbsp;</div></div>
       <div>
-        <div class="eyebrow" id="dcDate">A NAP LAPJA</div>
-        <h2 id="dcTitle">A nap lapja</h2>
-        <p id="dcText">A lapok most rendeződnek.</p>
+        <div class="eyebrow" id="dcDate">A nap lapja</div>
+        <h3 id="dcTitle">A nap lapja</h3>
+        <p class="txt" id="dcText">A lapok most rendeződnek.</p>
         <div class="meta" id="dcMeta"></div>
-        <div class="keywords" id="dcKw"></div>
+        <div id="dcKw"></div>
+        <div class="ritual" id="dcRit"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VETÉS -->
-  <section id="vetes" class="card">
-    <div class="eyebrow">HÁROMLAPOS VETÉS</div>
-    <h2>Mi volt, mi van, mi jön a rúdra</h2>
-    <p class="sectlead">Gondolj a következő edzésedre, aztán húzz három lapot a pakliból. A lapok együttállása adja az olvasatot — külön-külön nem sokat érnek, ahogy a sorozatok sem.</p>
+<!-- VETÉS -->
+<section id="vetes" class="alt">
+  <div class="wrap center">
+    <div class="eyebrow">I. fejezet · Háromlapos vetés</div>
+    <h2 class="title">Mi volt, mi van, mi jön a rúdra</h2>
+    <p class="lead">Gondolj a következő edzésedre, lélegezz ki a rúd fölött, aztán húzz három lapot. A lapok együttállása adja az olvasatot — külön-külön nem sokat érnek, ahogy a sorozatok sem.</p>
     <div class="spread" id="spread">
-      <div class="slot"><div class="lbl">AMI HÚZ VISSZA</div><div class="tcard back" data-slot="0"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
-      <div class="slot"><div class="lbl">AHOL MOST ÁLLSZ</div><div class="tcard back" data-slot="1"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
-      <div class="slot"><div class="lbl">AMI A RÚDON VÁR</div><div class="tcard back" data-slot="2"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
+      <div class="slot"><div class="lbl">Ami húz vissza</div><div class="tcard back" data-slot="0"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
+      <div class="slot"><div class="lbl">Ahol most állsz</div><div class="tcard back" data-slot="1"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
+      <div class="slot"><div class="lbl">Ami a rúdon vár</div><div class="tcard back" data-slot="2"><div class="inner"></div><div class="cap">&nbsp;</div></div></div>
     </div>
     <div class="deck" id="deck"></div>
-    <div style="text-align:center;margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px">
       <button class="btn" id="autoBtn">Sorsolj nekem hármat</button>
-      <button class="btn ghost sm" id="reshuffle">Új keverés</button>
+      <button class="btn ghost" id="reshuffle">Új keverés</button>
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--dim);margin:10px 0 0">
-      Vagy húzz kézzel a pakliból, ha a saját kezed jobban tudja.</p>
-    <div id="reading"></div>
-  </section>
+    <p class="mute small" style="margin-top:12px">Vagy húzz kézzel a pakliból, ha a saját kezed jobban tudja. Általában nem tudja.</p>
+    <div class="reading" id="reading" style="text-align:left"></div>
+  </div>
+</section>
 
-  <!-- HOROSZKÓP -->
-  <section id="horoszkop" class="card">
-    <div class="eyebrow">ERŐHOROSZKÓP</div>
-    <h2>Heti előrejelzés csillagjegyekre</h2>
-    <p class="sectlead">A jegyed nem határozza meg, mennyit emelsz. Csak azt, hogy milyen ürüggyel nem emeled.</p>
+<!-- ORÁKULUM -->
+<section id="orakulum">
+  <div class="wrap center">
+    <div class="eyebrow">II. fejezet · Vas-Orákulum</div>
+    <h2 class="title">Kérdezd meg a rudat</h2>
+    <p class="lead">Az Orákulum a Vas-Akasha Krónikából olvas, amelyet a szentély alapítói a lehúzógép mögötti falra véstek 1351-ben. Minden válasz egyedi, mély és ellenőrizhetetlen — ezért igaz.</p>
+    <div class="oracle">
+      <div class="ask">
+        <input class="f" id="oq" placeholder="Pl.: Miért nem nő a vádlim?" maxlength="140">
+        <button class="btn" id="oBtn">Kérdezem</button>
+      </div>
+      <div class="out" id="oout"></div>
+      <button class="btn ghost sm" id="oAgain" style="margin-top:8px">Újabb kinyilatkoztatás</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOROSZKÓP -->
+<section id="horoszkop" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">III. fejezet · Erőhoroszkóp</div>
+    <h2 class="title">Heti előrejelzés tizenkét jegyre</h2>
+    <p class="lead">A jegyed nem határozza meg, mennyit emelsz. Csak azt, hogy milyen ürüggyel nem emeled. Válaszd ki a jegyedet, és az Intézet elárulja az uralkodó izmodat, a tiltott gépedet és a kozmikus 1RM-módosítódat.</p>
     <div class="zgrid" id="zgrid"></div>
-    <div id="zout"></div>
-  </section>
+    <div class="zout" id="zout"></div>
 
-  <!-- RONTÁS -->
-  <section id="rontas" class="card">
-    <div class="eyebrow">DIAGNOSZTIKA</div>
-    <h2>Edzőtermi rontásvizsgálat</h2>
-    <p class="sectlead">A műszer a szkarabeusz-rezgést méri a felkarod és a szauna közti térben. Állj a telefonodtól kartávolságra, lélegezz ki, és indítsd el.</p>
-    <button class="btn" id="scanBtn">Vizsgálat indítása</button>
-    <div class="scanbar"><div class="scanfill" id="scanFill"></div></div>
-    <div id="scanText" style="font-size:13px;color:var(--dim);min-height:20px">A szentély készenlétben.</div>
-    <div id="result">
-      <div class="sev" id="sev"></div>
-      <h3 id="curseName"></h3>
-      <p id="curseDesc" style="color:var(--dim);font-size:14.5px;margin:6px 0 0"></p>
-      <div class="verdict" id="curseCure"></div>
+    <div class="card asc">
+      <div class="eyebrow">Vasaszcendens-kalkulátor</div>
+      <h3 style="font-size:20px;margin-bottom:6px">A második jegyed, amelyről sosem beszéltél</h3>
+      <p class="mute" style="font-size:14.5px">Születési dátumból és a jelenlegi guggolásodból kiszámoljuk, melyik jegy akadályozza a Nap-jegyedet abban, hogy edzen.</p>
+      <div class="row">
+        <input class="f" id="ascName" placeholder="Neved (vagy amit a rúd hív)">
+        <input class="f" id="ascDate" type="date">
+        <select class="f" id="ascLift">
+          <option>Guggolás: 40–70 kg</option>
+          <option>Guggolás: 70–100 kg</option>
+          <option>Guggolás: 100–140 kg</option>
+          <option>Guggolás: 140 kg felett</option>
+          <option>Még nem guggoltam</option>
+          <option>A Smith-gépen számít?</option>
+        </select>
+        <button class="btn sm" id="ascBtn">Kiszámol</button>
+      </div>
+      <div class="out" id="ascOut"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- NAPTÁR -->
-  <section id="naptar" class="card">
-    <div class="eyebrow">HOLDNAPTÁR</div>
-    <h2>Edzésnaptár és rontásjárás</h2>
-    <p class="sectlead">A hold járása, a Nílus áradása és a terem nyitvatartása alapján. Kattints egy napra.</p>
-    <div class="calhead">
-      <button class="nav" id="prev">‹</button>
-      <div class="m" id="mlabel"></div>
-      <button class="nav" id="next">›</button>
+<!-- DIAGNOSZTIKA -->
+<section id="diagnosztika">
+  <div class="wrap">
+    <div class="eyebrow">IV. fejezet · Diagnosztikai Központ</div>
+    <h2 class="title">Rontásvizsgálat és csakra-audit</h2>
+    <p class="lead">A műszer a szkarabeusz-rezgést méri a felkarod és a szauna közti térben. Állj a képernyőtől kartávolságra, lélegezz ki, és indítsd el. A vizsgálat fájdalommentes; az eredmény nem mindig.</p>
+    <div class="grid2">
+      <div class="card">
+        <div class="eyebrow">Rontásvizsgálat</div>
+        <h3 style="font-size:20px">Aktív rontások felderítése</h3>
+        <p class="mute" style="font-size:14.5px;margin:8px 0 14px">Tizenhat ismert edzőtermi rontást azonosítunk, a harmadik sorozat átkától a squat rack-ben bicepszező kísértetig.</p>
+        <button class="btn blood" id="scanBtn">Vizsgálat indítása</button>
+        <div class="scanbar"><div class="scanfill" id="scanFill"></div></div>
+        <div class="scantext" id="scanText">A szentély készenlétben.</div>
+        <div class="result" id="result">
+          <div class="sev" id="sev"></div>
+          <h3 id="curseName"></h3>
+          <p id="curseDesc" class="mute" style="font-size:14.5px;margin:6px 0 0"></p>
+          <div class="verdict" id="curseCure"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Csakra-audit</div>
+        <h3 style="font-size:20px">A hét erőcsakra állapota</h3>
+        <p class="mute" style="font-size:14.5px;margin:8px 0 14px">A vádli-gyökértől a bicepsz-koronáig. Az Intézet szerint a testben hét energiaközpont van, és mind a hét egy izomcsoport, amelyet vagy edzel, vagy elhanyagolsz.</p>
+        <button class="btn" id="chBtn">Audit indítása</button>
+        <div class="chakras" id="chakras"></div>
+        <div class="chout" id="chOut"></div>
+      </div>
     </div>
-    <div class="cal" id="cal"></div>
-    <div style="font-size:12px;color:var(--dim);margin-top:10px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px">
-      🟢 KEDVEZŐ &nbsp;&nbsp; 🔴 RONTÁSVESZÉLY &nbsp;&nbsp; ⚪ SEMLEGES
-    </div>
-    <div id="calout">Még nem választottál napot.</div>
-  </section>
+  </div>
+</section>
 
-  <!-- BOLT -->
-  <section id="bolt" class="card">
-    <div class="eyebrow">SZENTÉLYBOLT</div>
-    <h2>Talizmánok és erősítő kellékek</h2>
-    <p class="sectlead">Minden darab a szentélyben töltődik fel, telihold előtti éjszakán. A kulcsra fűzhető változatok a legkeresettebbek.</p>
+<!-- VASTÖRVÉNYEK -->
+<section id="vastorveny" class="alt">
+  <div class="wrap center">
+    <div class="eyebrow">V. fejezet · A kilenc ősi vastörvény</div>
+    <h2 class="title">Amit az ősök tudtak, csak nem volt hozzá övük</h2>
+    <p class="lead">Az emberi DNS két és fél millió éve emel. Az Intézet kilenc ősi törvényben foglalta össze, mit csinált az ősember a barlangban, és mit kellene csinálnod neked a teremben. Nagyjából ugyanazt, csak gravírozott tárcsával.</p>
+    <div class="tenets" id="tenets" style="text-align:left"></div>
+  </div>
+</section>
+
+<!-- AURA -->
+<section id="aura">
+  <div class="wrap">
+    <div class="eyebrow">VI. fejezet · Aura-Főkönyv</div>
+    <h2 class="title">Számold ki a heti aurádat</h2>
+    <p class="lead">A terem láthatatlan könyvelése. Minden visszatett tárcsa jóváírás, minden squat rack-beli bicepsz terhelés. Jelöld be, mi történt a héten, és az Intézet megmondja, hol állsz a Rontásgazda és Anubisz Kiválasztottja közötti skálán.</p>
+    <div class="aura">
+      <div class="ledger" id="ledger"></div>
+      <div class="card aurabox">
+        <div class="orb" id="auraOrb"></div>
+        <div class="big" id="auraBig">0</div>
+        <div class="mute small cond" style="letter-spacing:2px;text-transform:uppercase">aura-pont</div>
+        <div class="rank" id="auraRank">Kezdő Lélek</div>
+        <div class="desc" id="auraDesc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AKADÉMIA -->
+<section id="akademia" class="alt">
+  <div class="wrap center">
+    <div class="eyebrow">VII. fejezet · Vasakadémia</div>
+    <h2 class="title">Képzéseink és oklevelek</h2>
+    <p class="lead">Az Intézet akkreditációját önmaga adta ki, 1351-ben, egy félreértés során. Azóta négy képzést kínálunk, mindegyiket a szauna felső padján, kizárólag akkor, ha a Rontásfelvételi Főosztály ott ül.</p>
+    <div class="grid4" id="courses" style="text-align:left"></div>
+  </div>
+</section>
+
+<!-- BOLT -->
+<section id="bolt">
+  <div class="wrap">
+    <div class="eyebrow">VIII. fejezet · Szentélybolt</div>
+    <h2 class="title">Talizmánok, porok és rezgések</h2>
+    <p class="lead">Minden darab a szentélyben töltődik fel, telihold előtti éjszakán, rúdra fektetve. A kulcsra fűzhető változatok a legkeresettebbek; a szuperpozícióban lévők a legnehezebben szállíthatók.</p>
     <div class="shop" id="shop"></div>
-  </section>
+  </div>
+</section>
 
-  <!-- VÉLEMÉNYEK -->
-  <section id="velemeny" class="card">
-    <div class="eyebrow">VÁSÁRLÓI VÉLEMÉNYEK</div>
-    <h2>Mit írnak a kulcstalizmánról</h2>
-    <p class="sectlead">Átlag <b style="color:var(--gold-hi)">4,7</b> / 5 &nbsp;·&nbsp; 213 értékelés alapján</p>
-    <div id="reviews"></div>
-  </section>
+<!-- VÉLEMÉNYEK -->
+<section id="velemeny" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Igazolt rezgések</div>
+    <h2 class="title">Mit írnak a beavatottak</h2>
+    <p class="lead">Átlag <b class="gold">4,7</b> / 5 · 1 213 értékelés alapján, amelyeket senki sem írt, mert senki sem létezik. Ettől még mind igaz.</p>
+    <div class="revs" id="reviews"></div>
+  </div>
+</section>
 
-  <!-- KRÓNIKÁK -->
-  <section id="kronika" class="card">
-    <div class="eyebrow">ERŐMÉRLEG KRÓNIKÁK</div>
-    <h2>Ki mennyit emelt, és miért</h2>
-    <p class="sectlead">A szentély följegyzései. A szereplők kitaláltak, a súlyok kerekítve, a tanulság mégis makacs.</p>
-    <div class="chron" id="chron"></div>
-  </section>
+<!-- TUDOMÁNY -->
+<section id="tudomany">
+  <div class="wrap">
+    <div class="eyebrow">IX. fejezet · Tudományos háttér</div>
+    <h2 class="title">Kutatásaink, amelyeket senki nem kért</h2>
+    <p class="lead">Az Intézet a bizonyítékokon alapuló ezotéria úttörője. Minden állításunkat legalább egy haver megerősítette, és ez több, mint amit a legtöbb étrend-kiegészítő doboza fel tud mutatni.</p>
+    <div class="grid3" id="studies"></div>
+    <div class="chart" id="chart">
+      <h4>A fekvenyomás-növekedés 12 hét alatt, módszer szerint (%)</h4>
+      <div id="chartRows"></div>
+      <div class="note">Az alvás önálló hatását módszertani okokból kizártuk, mert elrontotta volna a talizmán eredményét. A lábnap kontrollcsoport eredményét az Intézet nem kommentálja.</div>
+    </div>
+    <div class="team" id="team"></div>
+  </div>
+</section>
 
-  <!-- IMPRESSZUM -->
-  <section id="impresszum" class="card">
-    <div class="eyebrow">IMPRESSZUM ÉS A PAPI REND</div>
-    <h2>Kik vagyunk, és hogyan kezdődött</h2>
-
-    <p style="margin-top:14px">Szentélyünket egy edzőtermi közös viccelődés és röhögés során alapítottuk. Két sorozat között valaki felvetette a lehúzógépnél, hogy Anubisz nyilván számolja a kihagyott lábnapokat, csak nem szól róla, mert az istenek nem szólnak, hanem jegyzetelnek. Onnantól nem volt visszaút. A harmadik sorozatot már senki nem csinálta meg, viszont estére megvolt a teljes tanrend, a rontások listája és a papi rend szervezeti felépítése.</p>
-
-    <p>Az alapítás pontos dátumát nem jegyeztük fel, mert akkor még nem gondoltuk, hogy dátumozni kell valamit, ami ennyire hülyeség. A szentély hivatalos álláspontja szerint <b>1351-ben</b> alapítottuk, egy félreértés során, amelyet azóta sem sikerült tisztázni.</p>
-
-    <hr class="orn">
-
-    <h3 style="font-size:16px;color:var(--gold-hi);margin-bottom:9px">A papi rend</h3>
-    <p><b>Főmagnéziás</b> — a szentelt krétapor őrzője, a füstáldozat levezetője, és az egyetlen, aki tudja, hol a kulcs a raktárhoz. Hetente kétszer van bent, mindkétszer későn.</p>
-    <p><b>Rontásfelvételi Főosztály</b> — egyszemélyes főosztály. Bejelentéseket a szauna felső padján fogad, kizárólag szóban, kizárólag ha éppen ott ül.</p>
-    <p><b>A Vetés Írnoka</b> — ő találja ki a lapok jelentését. Nem asztrológus, nem jós és nem edző. Cserébe húsz éve jár konditerembe, és ez a szentélyben magasabb képesítésnek számít.</p>
-    <p><b>Kapuőr</b> — a portás. Nem tud róla, hogy tagja a rendnek. Ettől még ő dönti el, ki jut be hajnalban.</p>
-
-    <hr class="orn">
-
-    <h3 style="font-size:16px;color:var(--gold-hi);margin-bottom:9px">Szerkesztőségi elvek</h3>
-    <p>Kizárólag magunkból viccelődünk. Az oldalon szereplő rontások mindegyikét saját magunkon figyeltük meg, néhányat többször is. Aki felismeri magát valamelyik átokban, az nem sértődés tárgya, hanem sorstárs.</p>
-    <p>Nem gúnyolunk ki senkit azért, mert kezdő, mert lassan halad, mert keveset emel vagy mert hisz valamiben. A poén tárgya a nagyképűség, a csodaszer és a kifogás — nem az ember, aki bemegy a terembe és megpróbálja.</p>
-
-    <hr class="orn">
-
-    <h3 style="font-size:16px;color:var(--gold-hi);margin-bottom:9px">Hirdetés és üzleti megkeresés</h3>
-    <p>A Hirdetésfelvételi Főosztályt a szentély alapításának napján megszüntettük, mert kiderült, hogy nem is hoztuk létre. Hirdetést nem fogadunk, együttműködési ajánlatot nem fogadunk, étrend-kiegészítő márkák leveleit a Rontásfelvételi Főosztály továbbítja a szauna felső padjára, ahol azok elpárolognak.</p>
-
-    <hr class="orn">
-
-    <h3 style="font-size:16px;color:var(--gold-hi);margin-bottom:9px">És most komolyan</h3>
-    <p style="color:#e6dcc9">Ez az oldal vicc. Nem sajtótermék, nem szolgáltatás és nem webshop. <b>Nem árulunk semmit, nem kérünk pénzt, nem gyűjtünk adatot, nincs rajta reklám.</b> A gombok nem küldenek sehova semmit, a beírt szöveg a böngésződben marad, és az oldal bezárásakor eltűnik.</p>
-    <p style="color:#e6dcc9">A lapok, jóslatok, rontások, talizmánok, árak, vélemények és krónikák mind kitaláltak. A szereplők nem léteznek — bárkivel való egyezés a véletlen műve. Valós személyekről, cégekről és márkákról nem írunk.</p>
-    <p style="color:#e6dcc9">A tarot, a horoszkóp és a talizmán nem helyettesíti a bemelegítést, az alvást, az étkezést, az edzőt vagy az orvost. Ha fáj valamid, orvoshoz fordulj, ne ankh-hoz.</p>
-  </section>
-
-</main>
-
-<!-- OLDALSÁV -->
-<aside class="side">
-  <div class="card moon">
-    <h3>A Hold állása</h3>
-    <div class="big" id="moonBig">🌘</div>
-    <div class="lab" id="moonLab">–</div>
-    <div class="sub" id="moonSub">–</div>
-    <hr class="orn">
-    <div style="font-size:13px;color:var(--dim);text-align:left">
-      Növekvő holdnál a tömegelés, fogyónál a szárítás megy könnyebben. A telihold előtti két nap a személyi csúcsok ideje.
+<!-- NAPTÁR + HOLD + LEGOLVASOTTABB -->
+<section id="naptar" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">X. fejezet · Holdnaptár</div>
+    <h2 class="title">Edzésnaptár, rontásjárás és PR-ablak</h2>
+    <p class="lead">A Hold járása, a Nílus áradása és a terem nyitvatartása alapján. A telihold körüli két nap a PR-ablak; a többi nap is emelhetsz, csak nem tudod, mi lesz.</p>
+    <div class="calwrap">
+      <div class="card">
+        <div class="calhead">
+          <button class="nav" id="prev">‹</button>
+          <div class="m" id="mlabel"></div>
+          <button class="nav" id="next">›</button>
+        </div>
+        <div class="cal" id="cal"></div>
+        <div class="legend">🟢 Kedvező &nbsp;·&nbsp; 🔴 Rontásveszély &nbsp;·&nbsp; ⚪ Semleges &nbsp;·&nbsp; ⭐ PR-ablak</div>
+        <div class="calout" id="calout">Még nem választottál napot. A napok viszont már választottak téged.</div>
+      </div>
+      <div>
+        <div class="card moon" style="margin-bottom:18px">
+          <div class="eyebrow" style="justify-content:center">A Hold állása</div>
+          <div class="big" id="moonBig">🌘</div>
+          <div class="lab" id="moonLab">–</div>
+          <div class="sub" id="moonSub">–</div>
+          <div class="adv">Növekvő holdnál a tömegelés, fogyónál a szárítás megy könnyebben. A telihold előtti két nap a személyi csúcsok ideje; utána a Csontváz a trónon pihenőt rendel.</div>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Legtöbbet rezgett</div>
+          <ul id="topread" class="toplist"></ul>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="card">
-    <h3>Legolvasottabb</h3>
-    <ul>
-      <li><a href="#napilap">Ezt üzeni A Torony, ha lábnap előtt fordul ki</a><span class="dat">3 napja · 14 210 olvasás</span></li>
-      <li><a href="#horoszkop">Három csillagjegy, akinek szeptemberben megjön az ereje</a><span class="dat">5 napja · 11 884 olvasás</span></li>
-      <li><a href="#bolt">Miért kopik meg a talizmán a szekrénykulcson?</a><span class="dat">1 hete · 9 402 olvasás</span></li>
-      <li><a href="#rontas">A tükör-dzsinn: felismerés és kiűzés hét lépésben</a><span class="dat">2 hete · 8 117 olvasás</span></li>
-    </ul>
+<!-- GLOSSZÁRIUM -->
+<section id="glosszarium">
+  <div class="wrap">
+    <div class="eyebrow">XI. fejezet · Glosszárium</div>
+    <h2 class="title">A szentély nyelve</h2>
+    <p class="lead">Fogalmak, amelyeket az Intézet talált ki, vagy a terem talált ki, és az Intézet magáénak vallja.</p>
+    <div class="gloss" id="gloss"></div>
   </div>
+</section>
 
-  <div class="card">
-    <h3>Személyes vasképlet</h3>
-    <p style="font-size:13.5px;color:var(--dim);margin:0 0 11px">Születési adatokból és a jelenlegi guggolásodból kiszámoljuk az erőházad urát.</p>
-    <input class="f" id="fName" placeholder="Neved">
-    <input class="f" id="fDate" type="date">
-    <select class="f" id="fLift">
-      <option>Guggolás: 40–70 kg</option>
-      <option>Guggolás: 70–100 kg</option>
-      <option>Guggolás: 100–140 kg</option>
-      <option>Guggolás: 140 kg felett</option>
-      <option>Még nem guggoltam</option>
-    </select>
-    <button class="btn sm" id="fBtn" style="width:100%">Képlet kiszámítása</button>
-    <div id="fOut" style="font-size:13.5px;color:var(--dim);margin-top:11px"></div>
+<!-- GYIK -->
+<section id="gyik" class="alt">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="eyebrow">XII. fejezet · Gyakran feltett kérdések</div>
+        <h2 class="title">Amit mindenki kérdez, és senki nem ért</h2>
+        <p class="lead">Az Intézet válaszai végleges, ellenőrizhetetlen és ciklikus jellegűek.</p>
+        <div class="faq" id="faq"></div>
+      </div>
+      <div>
+        <div class="initiate">
+          <div class="eyebrow" style="justify-content:center">Beavatás</div>
+          <h3 style="font-size:24px;margin-bottom:8px">Lépj be a Vaskapun</h3>
+          <p class="mute" style="font-size:15px">Heti vetés, holdfázis-riasztás, rontás-előrejelzés és a Főmagnéziás hétfői homíliája. Nem küldünk semmit, mert nincs hová — de a beavatás a szándékkal megtörténik.</p>
+          <div class="row">
+            <input class="f" id="nlMail" placeholder="e-mail cím (sehova nem megy)" type="email">
+            <button class="btn" id="nlBtn">Beavatást kérek</button>
+          </div>
+          <p class="mute small" style="margin:14px 0 0">Mind meg fogjuk csinálni.</p>
+        </div>
+        <div class="card" style="margin-top:18px">
+          <div class="eyebrow">A papi rend</div>
+          <p style="font-size:14.5px"><b class="gold">Főmagnéziás</b> — a szentelt krétapor őrzője, a füstáldozat levezetője, és az egyetlen, aki tudja, hol a kulcs a raktárhoz. Hetente kétszer van bent, mindkétszer későn.</p>
+          <p style="font-size:14.5px"><b class="gold">Rontásfelvételi Főosztály</b> — egyszemélyes főosztály. Bejelentéseket a szauna felső padján fogad, kizárólag szóban, kizárólag ha éppen ott ül.</p>
+          <p style="font-size:14.5px"><b class="gold">A Vetés Írnoka</b> — ő találja ki a lapok jelentését. Nem asztrológus, nem jós és nem edző. Cserébe húsz éve jár terembe, és ez az Intézetben magasabb képesítésnek számít.</p>
+          <p style="font-size:14.5px;margin:0"><b class="gold">Kapuőr</b> — a portás. Nem tud róla, hogy tagja a rendnek. Ettől még ő dönti el, ki jut be hajnalban.</p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="card">
-    <h3>Hírlevél</h3>
-    <p style="font-size:13.5px;color:var(--dim);margin:0 0 11px">Heti vetés, holdfázis-riasztás és rontás-előrejelzés minden hétfőn.</p>
-    <input class="f" id="nlMail" placeholder="e-mail cím" type="email">
-    <button class="btn sm" id="nlBtn" style="width:100%">Feliratkozom</button>
-  </div>
-</aside>
-
-</div>
-</div>
+</section>
 
 <footer class="site">
-  <div class="fgrid">
-    <div>
-      <h4>A SZENTÉLY</h4>
-      <a href="#impresszum">Rólunk</a>
-      <a href="#impresszum">A papi rend</a>
-      <a href="#impresszum">Impresszum</a>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>Anubisz Vaskapuja</h4>
+        <p>Erőezotéria és Vastarot Intézet. Alapítva 1351-ben, egy félreértés során, amelyet azóta sem sikerült tisztázni. Székhely: a szauna felső padja.</p>
+        <p>Szerkesztőségi elv: kizárólag magunkból viccelődünk. A poén tárgya a nagyképűség, a csodaszer és a kifogás — nem az ember, aki bemegy a terembe és megpróbálja.</p>
+      </div>
+      <div>
+        <h4>Jóslás</h4>
+        <a href="#napilap">Napi vastarot</a>
+        <a href="#vetes">Háromlapos vetés</a>
+        <a href="#orakulum">Vas-Orákulum</a>
+        <a href="#horoszkop">Erőhoroszkóp</a>
+      </div>
+      <div>
+        <h4>Intézet</h4>
+        <a href="#diagnosztika">Diagnosztika</a>
+        <a href="#vastorveny">Vastörvények</a>
+        <a href="#akademia">Vasakadémia</a>
+        <a href="#tudomany">Tudományos háttér</a>
+      </div>
+      <div>
+        <h4>Jogi</h4>
+        <a href="#" data-fake="Nincs ÁSZF. Nincs mit szerződni. Az oldal szatíra.">ÁSZF</a>
+        <a href="#" data-fake="Nem kezelünk adatot. Nincs mit kezelni. A rezgést nem tároljuk.">Adatkezelés</a>
+        <a href="#" data-fake="A süti nem fér bele a makróba. Nincs süti.">Süti-beállítások</a>
+        <a href="#" data-fake="Nincs elállás, mert nincs mitől. Az energia nem visszaküldhető.">Elállás</a>
+      </div>
     </div>
-    <div>
-      <h4>JÓSLÁS</h4>
-      <a href="#napilap">Napi vastarot</a>
-      <a href="#vetes">Háromlapos vetés</a>
-      <a href="#horoszkop">Erőhoroszkóp</a>
+    <div class="fine">
+      <b>Apróbetű, amely kivételesen igaz.</b> Ez az oldal szatíra: paródia az ezoterikus jóslásról és a fitneszipar csodaszereiről. Nem árulunk semmit, nem kérünk pénzt, nem gyűjtünk adatot, nincs rajta reklám. A gombok nem küldenek sehova semmit, a beírt szöveg a böngésződben marad. A lapok, jóslatok, rontások, talizmánok, árak, kutatások, oklevelek, vélemények és személyek mind kitaláltak — bárkivel való egyezés a véletlen műve. A tarot, a horoszkóp és a talizmán nem helyettesíti a bemelegítést, az alvást, az étkezést, az edzőt vagy az orvost. Ha fáj valamid, orvoshoz fordulj, ne ankh-hoz.
     </div>
-    <div>
-      <h4>BOLT</h4>
-      <a href="#bolt">Talizmánok</a>
-      <a href="#" data-fake>Szállítás</a>
-      <a href="#" data-fake>Elállás</a>
-    </div>
-    <div>
-      <h4>JOGI</h4>
-      <a href="#" data-fake>ÁSZF</a>
-      <a href="#" data-fake>Adatkezelés</a>
-      <a href="#" data-fake>Süti-beállítások</a>
-    </div>
+    <p class="center mute small" style="margin:22px 0 0">Anubisz Vaskapuja · nem kereskedelmi szatirikus projekt · <a href="https://github.com/zoll86/vastarot">forráskód</a></p>
   </div>
-
-  <div class="fake">
-    <h3>⚠ EZ AZ OLDAL VICC. NEM VALÓDI SZOLGÁLTATÁS.</h3>
-    <p>Az Anubisz Vaskapuja szatíra: paródia az ezoterikus jóslás és a fitneszipar csodaszereiről. <b>Nem árulunk semmit, nem kérünk pénzt, nem gyűjtünk adatot.</b> A gombok nem küldenek sehova semmit, a beírt szöveg a böngésződben marad és az oldal bezárásakor eltűnik.</p>
-    <p>A lapok, jóslatok, rontások, talizmánok és termékek kitaláltak. A vélemények és a krónikák szereplői kitalált személyek — bárkivel való egyezés véletlen. Az árak díszletek.</p>
-    <p>A tarot, a horoszkóp és a talizmán nem helyettesíti a bemelegítést, az alvást, az étkezést, az edzőt vagy az orvost. Ha fáj valamid, orvoshoz fordulj.</p>
-    <p style="margin-top:10px"><a href="#impresszum">Az alapítás története és a papi rend &rarr;</a></p>
-  </div>
-
-  <p style="text-align:center;color:var(--dim);font-size:12px;margin:22px 18px 0">
-    Anubisz Vaskapuja &middot; szatirikus projekt &middot; nem kereskedelmi célú
-  </p>
 </footer>
 
 <div id="cookie">
-  Ez az oldal nem használ sütiket, mert nincs mit gyűjtenie — ez egy vicc-oldal. Ezt a sávot csak azért látod, hogy tudd: <b>semmi sem valódi itt.</b>
-  <div class="row">
-    <button class="btn sm" id="ckOk">Értem</button>
-    <a href="#" class="btn ghost sm" id="ckMore" style="display:inline-block;text-decoration:none">Mi ez az oldal?</a>
-  </div>
+  Ez az oldal nem használ sütiket, mert a süti nem fér bele a makróba. Nincs mit elfogadnod — ez egy vicc-oldal, ahol <b class="gold">semmi sem valódi, csak a lábnap</b>.
+  <div class="row"><button class="btn sm" id="ckOk">Értem, emelek</button></div>
 </div>
-
-<div id="sticky"><b>SZATÍRA</b> — ez egy vicc-oldal, semmi sem valódi, semmit nem árulunk.</div>
 <div id="toast"></div>
 
-<script>
-/* ===== globális drag&drop letiltás ===== */
-['dragenter','dragover','dragleave','drop'].forEach(function(e){
-  document.addEventListener(e,function(v){v.preventDefault();v.stopPropagation();},false);
-  window.addEventListener(e,function(v){v.preventDefault();v.stopPropagation();},false);
-});
-
-/* ===== KÉPEK: ide kerülnek a Midjourney-vel generált fájlok =====
-   Ha üresen hagyod, az oldal a beépített szimbólumos lapokat rajzolja.
-   Példa:  KEPEK.lap[15] = 'kepek/xv_ego.jpg';   KEPEK.termek['t1'] = 'kepek/talizman.jpg';
-*/
-var KEPMAPPA = 'kepek/';
-var KEPKITERJESZTES = '.png';
-var KEPEK = { lap:{}, termek:{}, hat:null };
-for (var _i=0;_i<22;_i++) KEPEK.lap[_i] = KEPMAPPA + (_i<10?'0':'') + _i + KEPKITERJESZTES;
-KEPEK.hat = KEPMAPPA + 'hat' + KEPKITERJESZTES;
-['t1','t2','t3','t4','t5','t6'].forEach(function(id,ix){
-  KEPEK.termek[id] = KEPMAPPA + ['talizman','magnezia','karkoto','piramis','fustolo','ovcsat'][ix] + KEPKITERJESZTES;
-});
-
-/* ===== segéd ===== */
-var $=function(s){return document.querySelector(s)};
-var toastEl=$('#toast'),tt;
-function toast(m){toastEl.textContent=m;toastEl.classList.add('on');clearTimeout(tt);
-  tt=setTimeout(function(){toastEl.classList.remove('on')},3000);}
-function hash(n){n=(n*2654435761)%4294967296;return Math.abs(Math.floor(n));}
-
-/* ===== csillagok ===== */
-(function(){var c=$('#stars');for(var i=0;i<70;i++){var s=document.createElement('i');
-  var z=Math.random()*2+1;s.style.width=z+'px';s.style.height=z+'px';
-  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
-  s.style.animationDelay=(-Math.random()*4)+'s';c.appendChild(s);}})();
-
-/* hullócsillagok: véletlen időközönként egy-egy csík fut át a háttéren */
-(function(){
-  var c=$('#stars');
-  if(!c) return;
-  var halk=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(halk) return;
-  function hull(){
-    var e=document.createElement('span');
-    e.className='shoot';
-    var szog=25+Math.random()*25;                 // 25–50 fok, jobbra le
-    var tav=380+Math.random()*520;
-    var rad=szog*Math.PI/180;
-    e.style.setProperty('--ang',szog+'deg');
-    e.style.setProperty('--dx',Math.round(Math.cos(rad)*tav)+'px');
-    e.style.setProperty('--dy',Math.round(Math.sin(rad)*tav)+'px');
-    e.style.left=(Math.random()*80-5)+'%';
-    e.style.top=(Math.random()*45-5)+'%';
-    e.style.animationDuration=(1.5+Math.random()*1.2)+'s';
-    c.appendChild(e);
-    setTimeout(function(){e.remove();},3200);
-    setTimeout(hull, 2600+Math.random()*7000);
-  }
-  setTimeout(hull, 1500);
-  setTimeout(hull, 5200);
-})();
-
-/* ===== dátum + hold ===== */
-var HO=['január','február','március','április','május','június','július','augusztus','szeptember','október','november','december'];
-var NAP=['vasárnap','hétfő','kedd','szerda','csütörtök','péntek','szombat'];
-var now=new Date();
-$('#utilDate').innerHTML=now.getFullYear()+'. '+HO[now.getMonth()]+' '+now.getDate()+'., <b>'+NAP[now.getDay()]+'</b>';
-
-function moonPhase(d){
-  var syn=29.530588853;
-  var ref=Date.UTC(2000,0,6,18,14);
-  var days=(d.getTime()-ref)/86400000;
-  var a=((days%syn)+syn)%syn;
-  return a/syn;
-}
-var mp=moonPhase(now);
-var MOONS=[['🌑','Újhold','a ciklus nulladik napja'],['🌒','Növekvő sarló','emeld az ismétlésszámot'],
- ['🌓','Első negyed','a technika hete'],['🌔','Növekvő hold','tömegelésre kedvező'],
- ['🌕','Telihold','személyi csúcsok ideje'],['🌖','Fogyó hold','szárításra kedvező'],
- ['🌗','Utolsó negyed','deload ajánlott'],['🌘','Fogyó sarló','pihenj, ne hősködj']];
-var mi=Math.floor(mp*8+0.5)%8;
-$('#moonBig').textContent=MOONS[mi][0];
-$('#moonLab').textContent=MOONS[mi][1];
-$('#moonSub').textContent=MOONS[mi][2]+' · '+Math.round(mp*100)+'%';
-$('#utilMoon').textContent=MOONS[mi][1];
-
-/* ===== VASTAROT PAKLI (22 lap) ===== */
-var LAPOK=[
-{r:'0',s:'🚪',n:'A Belépő',k:['kezdet','tétovaság','friss lendület'],
- u:'Ma minden gép ismeretlen, és ez most előny: egyetlen rossz beidegződésed sincs. Kérdezd meg valakitől, mire való a kék kar. Nem fog kinevetni — valószínűleg ő sem tudja.',
- d:'Felkészülés nélkül sétáltál bele valamibe. Nézd meg, mi van a rúdon, mielőtt alá fekszel: a meglepetés nem edzésmódszer.'},
-{r:'I',s:'⚗️',n:'A Shaker Mestere',k:['eszköz','tudás','önámítás'],
- u:'Megvan minden kellék: öv, szíj, csuklópánt, két shaker és három alkalmazás. Ma az számít, hogy használod is őket, ne csak cipeld.',
- d:'A por nem edzés. A táskád nehezebb, mint amit felemelsz benne, és ez üzenet.'},
-{r:'II',s:'📜',n:'A Titkos Program',k:['terv','türelem','rejtett tudás'],
- u:'A program működik, csak még nem hallatszik. A negyedik héten szokott megszólalni. Addig unalmas, és pont ez a jó jel.',
- d:'Megint programot cserélsz. Egyik sem volt rossz. A váltogatás volt az.'},
-{r:'III',s:'🍚',n:'A Bőség Anyja',k:['táplálék','növekedés','többlet'],
- u:'Eszel eleget, és ez meglátszik a rúdon. A növekedés ma hivatalosan engedélyezett.',
- d:'A bőség átcsapott fölöslegbe. A tömegelés nem varázsszó, amitől a második adag is izommá válik.'},
-{r:'IV',s:'🏛️',n:'A Terem Ura',k:['rend','fegyelem','merevség'],
- u:'A rutin ma a szövetségesed. Ugyanaz a hely, ugyanaz az idő, ugyanaz a sorozat — ettől lesz a könnyűből egyszer nehéz.',
- d:'Annyira szabályos vagy, hogy már nem fejlődsz. Egy lépés oldalra nem árulás.'},
-{r:'V',s:'🧔',n:'A Vén Edző',k:['hagyomány','tanítás','dogma'],
- u:'Hallgass arra, aki húsz éve csinálja. Az alapok azért unalmasak, mert működnek, és azért működnek, mert unalmasak.',
- d:'Valaki tekintélyből mond neked butaságot. Attól, hogy nagyobb nálad, még nem élettankönyv.'},
-{r:'VI',s:'🤝',n:'A Páros Sorozat',k:['társ','döntés','felelősség'],
- u:'Edzőtárssal ma többet bírsz. A biztosítás nem gyengeség, hanem kétszemélyes bátorság.',
- d:'Bent vagytok, de csak beszélgettek. Negyven perc, két sorozat, kilenc téma.'},
-{r:'VII',s:'🛞',n:'A Tárcsás Szekér',k:['lendület','irány','erőltetés'],
- u:'Megy a szekér. Ma nem tervezni kell, hanem hajtani.',
- d:'Sebességed van, irányod nincs. Négy hónapja gyorsulsz ugyanabban a körben.'},
-{r:'VIII',s:'🦁',n:'A Nyers Erő',k:['erő','önuralom','szelídítés'],
- u:'Az erő ma engedelmes. Nem letéped a rudat, hanem irányítod — ez a különbség a súly és a teljesítmény között.',
- d:'Erőből viszed, amit technikából kellene. A derekad most csendben van, de jegyzetel.'},
-{r:'IX',s:'🕯️',n:'A Hajnali Remete',k:['magány','csend','elzárkózás'],
- u:'Üres terem, hatkor, senki nem szól hozzád. Ma senkire nincs szükséged, és pont ez a jó benne.',
- d:'Túl régóta edzel egyedül. Valaki két másodperc alatt kijavítana valamit, amit te két éve nem veszel észre.'},
-{r:'X',s:'☸️',n:'A Ciklus Kereke',k:['periodizáció','fordulat','véletlen'],
- u:'A mélypont után jön a felfelé ív. A rossz hetek nem hibák, hanem a ciklus fizetős része.',
- d:'Minden hónapban ugyanoda érkezel vissza. A kör csak akkor lesz spirál, ha viszel bele terhelést.'},
-{r:'XI',s:'⚖️',n:'A Mérleg',k:['egyensúly','igazság','elszámolás'],
- u:'Amit beletettél, ma visszakapod. Se többet, se kevesebbet — a vas nem tud hízelegni.',
- d:'Húzol is, nyomsz is, de csak az egyiket szereted. A tested könyvelése pontosabb, mint a tiéd.'},
-{r:'XII',s:'🙃',n:'A Húzódzkodó',k:['függés','új nézőpont','várakozás'],
- u:'A rúdon lógva más a világ. Ma nem haladni kell, hanem kibírni.',
- d:'Beragadtál egy pozícióba, és vársz. A várakozás nem terv, csak kényelmesebb annál.'},
-{r:'XIII',s:'🕳️',n:'A Deload',k:['lezárás','újrakezdés','félelem'],
- u:'Valaminek vége: egy programnak, egy szokásnak, egy súlynak. Engedd el, a következő már az ajtóban toporog.',
- d:'Félsz visszavenni, mert azt hiszed, elveszíted. Pont fordítva működik: a pihenés nem visszalépés.'},
-{r:'XIV',s:'🥄',n:'A Makró',k:['mérték','arány','türelem'],
- u:'A jó arány ma többet ér, mint a nagy szám. Egy apró kiigazítás, és két hét múlva más ember vagy.',
- d:'Vagy mindent tiltasz, vagy semmit. A közép sosem volt látványos, mégis mindig az nyer.'},
-{r:'XV',s:'😈',n:'Az Ego',k:['hiúság','kényszer','lánc'],
- u:'Van benned ma egy egészséges adag dac. Használd — de te tartsd pórázon, ne fordítva.',
- d:'Húsz kilóval többet tettél fel, mert néztek. A rúd nem tud imponálni helyetted, csak megmondani az igazat.'},
-{r:'XVI',s:'🗼',n:'Az Összeomlott Sorozat',k:['kudarc','összeomlás','tisztulás'],
- u:'Ledőlt valami, és ez jó hír: ami maradt, az bírja a terhelést.',
- d:'Elszállt egy sorozat, és most az egész életedet felülvizsgálod. Egy rossz nap nem ítélet, csak egy rossz nap.'},
-{r:'XVII',s:'⭐',n:'A Személyi Csúcs',k:['remény','csúcs','vékony jég'],
- u:'Ma megvan az a nap, amikor rámehetsz. Melegíts fel rendesen, aztán vidd el.',
- d:'Csúcsot hajszolsz alvás és étel nélkül. A csillag nem világít üres tankba.'},
-{r:'XVIII',s:'🌙',n:'A Hajnali Éhség',k:['illúzió','ösztön','zavar'],
- u:'A tested jelez, és ma érdemes hallgatni rá. Ne magyarázd túl: egyél.',
- d:'Este hős vagy, hajnalban filozófus. A rontás a szundi gombban lakik, nem benned.'},
-{r:'XIX',s:'☀️',n:'A Pumpa',k:['siker','öröm','önelégültség'],
- u:'Minden megy. Élvezd — az ilyen napokból élsz majd a rossz heteken.',
- d:'Jól érzed magad, de nem terhelsz. A pumpa látvány, nem adaptáció.'},
-{r:'XX',s:'📯',n:'A Visszatérés',k:['számvetés','újrakezdés','ébredés'],
- u:'Vége az ünnepnek, és te elindultál. A visszatérés nehezebb, mint a kezdés, és többet is ér.',
- d:'Már háromszor tértél vissza idén. A fa mindig útban van, mindig más ürüggyel.'},
-{r:'XXI',s:'🌍',n:'A Teljes Test',k:['egész','befejezés','integráció'],
- u:'Összeáll a kép: alvás, étel, terhelés. Ez a hét lezár valamit, méghozzá jó értelemben.',
- d:'Egy testrészt évek óta kihagysz. A világ nem kerek fél lábbal — és a nadrág sem áll jól.'}
-];
-
-var HATRAJZ = '<svg class="backart" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">'+
- '<defs><radialGradient id="bg1" cx="50%" cy="50%"><stop offset="0%" stop-color="#3a2b52"/>'+
- '<stop offset="100%" stop-color="#150e26"/></radialGradient></defs>'+
- '<rect width="100" height="160" fill="url(#bg1)"/>'+
- '<g stroke="#c6a35c" fill="none" stroke-width="1.1" opacity=".85">'+
- '<circle cx="50" cy="80" r="30"/><circle cx="50" cy="80" r="22" opacity=".6"/>'+
- '<circle cx="50" cy="80" r="12" opacity=".4"/>'+
- '<line x1="24" y1="66" x2="76" y2="94"/><line x1="24" y1="94" x2="76" y2="66"/>'+
- '<circle cx="24" cy="66" r="4"/><circle cx="76" cy="94" r="4"/>'+
- '<circle cx="24" cy="94" r="4"/><circle cx="76" cy="66" r="4"/>'+
- '<rect x="8" y="8" width="84" height="144" rx="3" opacity=".5"/>'+
- '<rect x="12" y="12" width="76" height="136" rx="2" opacity=".3"/></g>'+
- '<text x="50" y="87" font-size="20" text-anchor="middle" fill="#f0d79a" opacity=".9">&#9765;</text>'+
- '</svg>';
-
-function backHTML(){
-  return KEPEK.hat
-    ? '<img src="'+KEPEK.hat+'" alt="" onerror="this.parentNode.innerHTML=HATRAJZ">'
-    : HATRAJZ;
-}
-
-function drawCard(el,lap,rev){
-  var img=KEPEK.lap[LAPOK.indexOf(lap)];
-  el.className='tcard'+(rev?' rev':'');
-  var inner='<div class="inner">';
-  if(img){
-    inner+='<img src="'+img+'" alt="'+lap.n+'" onerror="this.parentNode.innerHTML=\'<div class=&quot;fb&quot;><div class=&quot;rn&quot;>'+lap.r+'</div><div class=&quot;sym&quot;>'+lap.s+'</div></div>\'">';
-  }else{
-    inner+='<div class="fb"><div class="rn">'+lap.r+'</div><div class="sym">'+lap.s+'</div></div>';
-  }
-  inner+='</div><div class="cap"><span class="cr">'+lap.r+'</span>'+lap.n+(rev?' <em>fordítva</em>':'')+'</div>';
-  el.innerHTML=inner;
-}
-
-/* --- napi lap (dátum alapján determinisztikus) --- */
-(function(){
-  var key=now.getFullYear()*10000+(now.getMonth()+1)*100+now.getDate();
-  var idx=hash(key)%LAPOK.length;
-  var rev=hash(key+7)%100<32;
-  var L=LAPOK[idx];
-  drawCard($('#dayCard'),L,rev);
-  $('#dcDate').textContent='A NAP LAPJA · '+now.getFullYear()+'. '+HO[now.getMonth()]+' '+now.getDate()+'.';
-  $('#dcTitle').textContent=L.r+' — '+L.n+(rev?' (fordítva)':'');
-  $('#dcText').textContent=rev?L.d:L.u;
-  $('#dcMeta').textContent=(rev?'Fordított állás':'Egyenes állás')+' · holdfázis: '+MOONS[mi][1].toLowerCase()+' · erőindex '+(48+hash(key+3)%50)+'/100';
-  $('#dcKw').innerHTML=L.k.map(function(k){return '<span class="kw">'+k+'</span>'}).join('');
-})();
-
-/* ===== HÁROMLAPOS VETÉS ===== */
-var picked=[],order=[];
-function shuffle(){
-  picked=[];order=[];
-  for(var i=0;i<LAPOK.length;i++)order.push(i);
-  for(var j=order.length-1;j>0;j--){var r=Math.floor(Math.random()*(j+1));var t=order[j];order[j]=order[r];order[r]=t;}
-  var d=$('#deck');d.innerHTML='';
-  order.forEach(function(ix,pos){
-    var m=document.createElement('div');m.className='mini';m.innerHTML='<span>&#9790;</span>';
-    m.addEventListener('click',function(){
-      if(picked.length>=3||m.classList.contains('used'))return;
-      m.classList.add('used');
-      var rev=Math.random()<0.32;
-      picked.push({L:LAPOK[ix],rev:rev});
-      var slot=document.querySelector('.tcard[data-slot="'+(picked.length-1)+'"]');
-      drawCard(slot,LAPOK[ix],rev);
-      slot.setAttribute('data-slot',picked.length-1);
-      if(picked.length===3)interpret();
-    });
-    d.appendChild(m);
-  });
-  document.querySelectorAll('.tcard[data-slot]').forEach(function(s,i){
-    s.className='tcard back';s.innerHTML='<div class="inner">'+backHTML()+'</div><div class="cap">&nbsp;</div>';
-    s.setAttribute('data-slot',i);
-  });
-  $('#reading').classList.remove('on');
-}
-function interpret(){
-  var P=['Ami húz vissza','Ahol most állsz','Ami a rúdon vár'];
-  var html='<h3>A vetés olvasata</h3>';
-  picked.forEach(function(c,i){
-    html+='<p><b style="color:var(--gold-hi)">'+P[i]+' — '+c.L.r+' '+c.L.n+(c.rev?' (fordítva)':'')+':</b> '+(c.rev?c.L.d:c.L.u)+'</p>';
-  });
-  /* kombináció-szabályok */
-  var names=picked.map(function(c){return c.L.n});
-  var revs=picked.filter(function(c){return c.rev}).length;
-  var v='';
-  if(names.indexOf('Az Ego')>-1&&names.indexOf('Az Összeomlott Sorozat')>-1)
-    v='Az Ego és a Torony egy vetésben klasszikus figyelmeztetés: a héten olyan súlyt akarsz feltenni, amit nem a tested kért, hanem a büszkeséged. Vedd le róla a tárcsát, mielőtt az élet veszi le.';
-  else if(names.indexOf('A Deload')>-1&&names.indexOf('A Személyi Csúcs')>-1)
-    v='Lezárás és csúcs egyszerre: valamit be kell fejezned ahhoz, hogy a rekord megszülethessen. Általában egy szokás az, nem egy gyakorlat.';
-  else if(names.indexOf('A Titkos Program')>-1&&names.indexOf('A Ciklus Kereke')>-1)
-    v='A terv és a ciklus együtt azt mondja: nem programot kell váltanod, hanem kivárnod. A negyedik hét előtt semmi nem dől el.';
-  else if(revs===3)
-    v='Mindhárom lap fordítva jött ki. Ez a szentélyben nem katasztrófát jelent, hanem azt, hogy a hét akadálya belül van, nem a rúdon. Kezdd az alvással.';
-  else if(revs===0)
-    v='Egyetlen fordított lap sincs. Ritka, tiszta vetés: a héten az akadályok külsők — időbeosztás, foglalt gép, forgalom. Ezeket meg lehet kerülni.';
-  else{
-    var VEG=[
-     'A három lap együtt azt mondja: kevesebb újítás, több ismétlés. Ez a hét nem a kísérletezésé.',
-     'A vetés lefelé indul és felfelé zár. Ha a hétfő döcög, ne temesd el az egész hetet kedden.',
-     'A lapok szerint egy dolgot csinálsz jól, kettőt hanyagul. A jót ne bántsd, a másik kettőből válassz egyet — nem hármat.',
-     'A középső lap a legerősebb. Ami most van, az fontosabb, mint amitől félsz vagy amit remélsz.',
-     'A vetés türelmet ír elő. A számok nem hetekben mozdulnak, hanem hónapokban, és nem szólnak előre.',
-     'A hét kulcsa nem a teremben dől el, hanem a konyhában és az ágyban. A rúd csak aláírja.',
-     'A lapok szerint pontosan tudod, mit kellene tenned. A vetés nem hozott új információt, csak tanút.',
-     'Három lap, egy üzenet: ne akard behozni egy hét alatt azt, amit három hónap alatt hagytál el.'];
-    v=VEG[hash(names.join('').length*17+revs*31+picked[0].L.r.length)%VEG.length];
-  }
-  html+='<div class="verdict"><b>Az együttállás:</b> '+v+'</div>';
-  $('#reading').innerHTML=html;$('#reading').classList.add('on');
-}
-$('#reshuffle').addEventListener('click',function(){shuffle();toast('A pakli megkeverve.')});
-$('#autoBtn').addEventListener('click',function(){
-  shuffle();
-  var ms=[].slice.call(document.querySelectorAll('.mini'));
-  [0,1,2].forEach(function(i){
-    setTimeout(function(){
-      if(ms[i]) ms[i].dispatchEvent(new MouseEvent('click',{bubbles:true}));
-    }, i*430);
-  });
-});
-shuffle();
-
-/* ===== HOROSZKÓP ===== */
-var ZOD=[
-{s:'♈',n:'Kos',d:'03.21–04.19',t:'A Kos most mindent kétszer akar feltenni. A rúd nem verseng veled, csak van.',g:'Fekvenyomás — a segítő kérése nem gyengeség, hanem előrelátás.',b:'Az ego. Konkrétan a sajátod.',l:'A negyedik lyuk az övön.'},
-{s:'♉',n:'Bika',d:'04.20–05.20',t:'A Bika a héten húz, nyom, majd eszik. A csillagok szerint ez a helyes sorrend.',g:'Felhúzás: nehéz, lassú, elégedett.',b:'Az öltözőpad. Ha leülsz, ott maradsz.',l:'Bármi, ami barna és sült.'},
-{s:'♊',n:'Ikrek',d:'05.21–06.21',t:'Két edzésterved van, és egyiket sem csinálod. Ez most csillagászati tény.',g:'Egy terv. Egy. Akármelyik.',b:'A harmadik videó a bemelegítésről.',l:'A jegyzetfüzet.'},
-{s:'♋',n:'Rák',d:'06.22–07.22',t:'A Rák érzelmileg készül a lábnapra, ami hosszabb, mint maga a lábnap.',g:'Guggolás, gondolkodás nélkül.',b:'A hold, a szauna és mindenki hangulata.',l:'Meleg víz edzés után.'},
-{s:'♌',n:'Oroszlán',d:'07.23–08.22',t:'Az Oroszlán ma nézőközönség nélkül is jól teljesít. Ez a hét nagy próbatétele.',g:'Vállnap, tükör nélkül.',b:'A tükör. Végig.',l:'Egy edzőtárs, aki nem tapsol.'},
-{s:'♍',n:'Szűz',d:'08.23–09.22',t:'A Szűz táblázata gyönyörű. A táblázat viszont nem edz helyette.',g:'Ismétlésszám növelése, ceruza letéve.',b:'A tökéletes program keresése.',l:'A stopper.'},
-{s:'♎',n:'Mérleg',d:'09.23–10.22',t:'A Mérleg egyensúlyoz kardió és vas között, és közben megáll középen. Középen nincs eredmény.',g:'Válassz egyet ma, holnap a másikat.',b:'A „majd eldöntöm” mondat.',l:'Egy fix időpont.'},
-{s:'♏',n:'Skorpió',d:'10.23–11.21',t:'A Skorpió titokban erősebb, mint amit bevall. A szentély látja a naplót.',g:'Maximumteszt, tanú előtt.',b:'A titkolózás. Senki nem nevet ki.',l:'A sötét terem hajnalban.'},
-{s:'♐',n:'Nyilas',d:'11.22–12.21',t:'A Nyilas új sportágat akar kezdeni. A régi még nincs kész.',g:'A meglévő terv befejezése.',b:'A boulderterem hirdetése.',l:'A hosszú futás.'},
-{s:'♑',n:'Bak',d:'12.22–01.19',t:'A Bak túl fogja edzeni magát, és büszke lesz rá. A pihenőnap is edzés, csak nem hiszed el.',g:'Egy teljes szabadnap.',b:'A hatodik edzésnap.',l:'Az alvás. Igen, az.'},
-{s:'♒',n:'Vízöntő',d:'01.20–02.18',t:'A Vízöntő valami furcsa gyakorlatot talált. Működni fog, csak nem úgy.',g:'Alapgyakorlat, unalmasan.',b:'A gumiszalagos hétlépéses szertartás.',l:'A klasszikus felhúzás.'},
-{s:'♓',n:'Halak',d:'02.19–03.20',t:'A Halak úsznak az árral, egyenesen haza. A terem ma két megállóval arrébb van, mint tegnap.',g:'A táska előre bepakolása.',b:'A kanapé, első ránézésre.',l:'A zene, jó hangosan.'}];
-var zg=$('#zgrid');
-ZOD.forEach(function(z,i){
-  var d=document.createElement('div');d.className='z';
-  d.innerHTML='<span class="sym">'+z.s+'</span><span class="nm">'+z.n+'</span><span class="dt">'+z.d+'</span>';
-  d.addEventListener('click',function(){
-    document.querySelectorAll('.z').forEach(function(e){e.classList.remove('active')});
-    d.classList.add('active');
-    var wk=Math.floor(now.getTime()/604800000);
-    var pw=55+hash(wk*13+i*7)%44;
-    var L=LAPOK[hash(wk*29+i*11)%LAPOK.length];
-    $('#zout').innerHTML='<h3 style="font-size:18px;color:var(--gold-hi);margin-bottom:10px">'+z.s+' '+z.n+' — heti erőelőrejelzés</h3>'+
-      '<div class="zline"><span>ÜZENET</span><span>'+z.t+'</span></div>'+
-      '<div class="zline"><span>KEDVEZŐ</span><span>'+z.g+'</span></div>'+
-      '<div class="zline"><span>KERÜLENDŐ</span><span>'+z.b+'</span></div>'+
-      '<div class="zline"><span>SZERENCSEHOZÓ</span><span>'+z.l+'</span></div>'+
-      '<div class="zline"><span>KÍSÉRŐLAP</span><span>'+L.r+' '+L.n+' — '+L.k.join(', ')+'</span></div>'+
-      '<div class="zline"><span>RONTÁSVÉDELEM</span><span style="flex:1">'+pw+'% — a maradékot bemelegítéssel kell pótolni<div class="bar"><i style="width:'+pw+'%"></i></div></span></div>';
-    $('#zout').classList.add('on');
-  });
-  zg.appendChild(d);
-});
-
-/* ===== RONTÁS ===== */
-var CURSES=[
-{n:'A harmadik sorozat átka',s:'KÖZEPES ÁRTÁS',d:'A kettőig minden rendben, a harmadikra hirtelen eszedbe jut, hogy van otthon mosogatás. Klasszikus kapuőr-rontás.',c:'Három mély kilégzés a rúd fölött, majd a súlyt nem teszed le, csak lassan gondolsz rá.'},
-{n:'Anubisz haragja (kihagyott lábnap)',s:'SÚLYOS ÁRTÁS',d:'A sakálfejű isten számolja a lábnapokat. Nem szól, csak jegyzetel. Ez a legrégebbi terembeli rontás.',c:'Egy őszinte guggolás üres rúddal, hangosan kimondva: „jövő héten sem hazudok magamnak”.'},
-{n:'Tükör-dzsinn megszállás',s:'ENYHE, DE KRÓNIKUS',d:'Bementél nyolc sorozatra, kijöttél negyvenhat fotóval és kettővel. A dzsinn a tükör mögött lakik, és hízeleg.',c:'A telefon a szekrénybe, a talizmán a zsebbe. A dzsinn nem bírja a képernyő nélküli csendet.'},
-{n:'Elhagyott súlytárcsa szelleme',s:'TERJEDŐ ÁRTÁS',d:'Valaki nem tette vissza a tárcsát, és a szelleme most rád ragadt. Innen a rossz hangulat és a hirtelen kislábujj-fájdalom.',c:'Két idegen tárcsa visszapakolása. A karma azonnal és hangosan könyvel.'},
-{n:'Szaunapadi ártó tekintet',s:'KÖZEPES ÁRTÁS',d:'Valaki a felső padról szemmel vert, miközben te a homokórát nézted. A gőz felerősíti a rezgést.',c:'Hideg zuhany, közben Ízisz nevének háromszori elmormolása. Ízisz a hideget kedveli.'},
-{n:'Fehérje-shaker penészdémon',s:'BIOLÓGIAI ÁRTÁS',d:'A shaker három napja a táskában. Ez már nem rontás, ez ökoszisztéma. Saját akarata van.',c:'Kidobás. Nem mosogatás. Kidobás. A démonnal nem alkuszunk.'},
-{n:'Gépfoglaló fantom',s:'TÁRSADALMI ÁRTÁS',d:'Törölköző a gépen, gazdája sehol. A fantom nyolc perce nincs jelen, mégis birtokol.',c:'Udvarias kérdés egy idegentől. A fantom nem bírja a szemkontaktust.'},
-{n:'Ego-emelés vasátka',s:'KRITIKUS ÁRTÁS',d:'Húsz kilóval többet tettél fel, mert néztek. A rúd tudja. A derekad is tudni fogja, csütörtökön.',c:'Húsz kiló le, öt ismétlés fel. A csí a technikában lakik, nem a tárcsában.'},
-{n:'Csirkemell-monotónia rontás',s:'LASSÚ SORVASZTÁS',d:'Kilencvenkét egyforma ebéd. A lélek elszürkül, a makró viszont stimmel. Ez a legalattomosabb.',c:'Fűszer. Bármilyen. A monotónia rontását a köménnyel törik meg.'},
-{n:'Deload-átok',s:'ÁLCÁZOTT ÁRTÁS',d:'Két hete deloadolsz, és mindkét hét véletlenül sikerült. A pihenés szelleme átvette az irányítást.',c:'Egy nehéz sorozat, szemtanú előtt. A szellem tanúk előtt visszavonul.'},
-{n:'Bemelegítés-tagadó szélszellem',s:'KÖZEPES ÁRTÁS',d:'Beestél a terembe, egyből fekvenyomás. A szélszellem sietteti az embert, aztán elszalad.',c:'Nyolc perc kerékpár. Unalmas, mint minden működő varázslat.'},
-{n:'Hajnali ébresztő-rontás',s:'ISMÉTLŐDŐ ÁRTÁS',d:'Este hős vagy, hajnali ötkor filozófus. A rontás a szundi gombban lakik, nem benned.',c:'A telefon az előszobába. A rontás nem tud járni.'}];
-var scanning=false;
-$('#scanBtn').addEventListener('click',function(){
-  if(scanning)return;scanning=true;
-  var f=$('#scanFill'),t=$('#scanText'),r=$('#result');
-  r.classList.remove('on');f.style.width='0%';
-  var M=['Szkarabeusz-rezgés kalibrálása...','Felkar-aura beolvasása...','Csí-vezeték átjárhatóság: mérés...','Nílus-index egyeztetése...','Szentélyi adatbázis lekérdezése...','Rontás azonosítása...'];
-  var p=0,i=-1;t.textContent=M[0];
-  var iv=setInterval(function(){
-    p=Math.min(100,p+Math.random()*11+5);f.style.width=p+'%';
-    var ni=Math.min(M.length-1,Math.floor(p/17));if(ni!==i){i=ni;t.textContent=M[i];}
-    if(p>=100){clearInterval(iv);scanning=false;
-      var c=CURSES[Math.floor(Math.random()*CURSES.length)];
-      t.textContent='Vizsgálat lezárva. Találat: 1 aktív rontás.';
-      $('#sev').textContent=c.s;$('#curseName').textContent=c.n;$('#curseDesc').textContent=c.d;
-      $('#curseCure').innerHTML='<b>Ellenszer:</b> '+c.c;
-      r.classList.add('on');}
-  },190);
-});
-
-/* ===== NAPTÁR ===== */
-var DOW=['H','K','Sze','Cs','P','Szo','V'];
-var VER=[
-{t:'good',e:'🟢',x:'Erős nap. A csí egyenesen a rúdba folyik — tehetsz rá egy tárcsával többet.'},
-{t:'good',e:'🟢',x:'Anubisz jóindulatú. Lábnapra kiváló, a térd ma megbocsát.'},
-{t:'good',e:'🟢',x:'A Nílus árad, az izomrostok is. Nagy gyakorlatok napja, kevés csevegéssel.'},
-{t:'bad',e:'🔴',x:'Rontásveszély. Valaki ránéz a rúdadra, mielőtt hozzáérnél. Bemelegítés duplán.'},
-{t:'bad',e:'🔴',x:'A tükör-dzsinn aktív. Telefon a szekrénybe, különben negyven perc megy el fotózásra.'},
-{t:'bad',e:'🔴',x:'Kedvezőtlen állás. Ma ne akarj maximumot — a lapok szerint csütörtökön fájna.'},
-{t:'mid',e:'⚪',x:'Semleges nap. Amit beleteszel, annyit ad vissza. Se áldás, se átok.'},
-{t:'mid',e:'⚪',x:'Langyos energiák. Jó technikagyakorlásra, rossz hősködésre.'},
-{t:'mid',e:'⚪',x:'A szentély nem lát semmit. Ez általában jó jel, néha csak felhős.'},
-{t:'good',e:'🟢',x:'Pihenőnapra ideális. A regeneráció is szertartás, csak fekve.'},
-{t:'bad',e:'🔴',x:'A gépfoglaló fantom járkál. Készülj B-tervvel, és ne vedd magadra.'},
-{t:'mid',e:'⚪',x:'Kettős állás: az edzés jó lesz, az étkezés elszabadul. Vállald.'}];
-var cy=now.getFullYear(),cm=now.getMonth(),sel=null;
-function build(){
-  var c=$('#cal');c.innerHTML='';
-  $('#mlabel').textContent=cy+'. '+HO[cm];
-  DOW.forEach(function(d){var e=document.createElement('div');e.className='dow';e.textContent=d;c.appendChild(e)});
-  var f=(new Date(cy,cm,1).getDay()+6)%7,dm=new Date(cy,cm+1,0).getDate();
-  for(var i=0;i<f;i++){var x=document.createElement('div');x.className='day empty';c.appendChild(x)}
-  for(var d=1;d<=dm;d++)(function(d){
-    var v=VER[hash(cy*10000+(cm+1)*100+d)%VER.length];
-    var e=document.createElement('div');
-    e.className='day '+v.t+((cy===now.getFullYear()&&cm===now.getMonth()&&d===now.getDate())?' today':'')+(sel===cy+'-'+cm+'-'+d?' sel':'');
-    e.innerHTML=d+'<span class="dot">'+v.e+'</span>';
-    e.addEventListener('click',function(){
-      sel=cy+'-'+cm+'-'+d;
-      document.querySelectorAll('.day').forEach(function(y){y.classList.remove('sel')});
-      e.classList.add('sel');
-      $('#calout').innerHTML='<b>'+cy+'. '+HO[cm]+' '+d+'.</b> '+v.e+' — '+v.x;
-    });
-    c.appendChild(e);
-  })(d);
-}
-$('#prev').addEventListener('click',function(){cm--;if(cm<0){cm=11;cy--}build()});
-$('#next').addEventListener('click',function(){cm++;if(cm>11){cm=0;cy++}build()});
-build();
-
-/* ===== BOLT ===== */
-var PROD=[
-{id:'t1',s:'🔑',n:'Anubisz Kulcstalizmán',d:'Sárgaréz, sakálfejjel. Szekrénykulcsra fűzve viseld — a rontás a zárnál lép be a leggyakrabban.',p:'8 900 Ft',o:'11 900 Ft',st:'Raktáron: 4 db',low:true,r:5,rc:213,rb:'LEGKERESETTEBB'},
-{id:'t2',s:'🏺',n:'Nílus-őrlemény magnéziapor',d:'Telihold előtt szitált, kézzel áldott krétapor. A markolat és a szándék közti súrlódást növeli.',p:'5 490 Ft',o:'',st:'Raktáron',low:false,r:4,rc:88,rb:''},
-{id:'t3',s:'📿',n:'Csí-töltő vaskarkötő',d:'Hematit és réz. Az alkar energiavezetését hangolja, hogy a húzás ne a hüvelykujjnál akadjon el.',p:'12 900 Ft',o:'15 900 Ft',st:'Raktáron: 2 db',low:true,r:4,rc:141,rb:'AKCIÓ'},
-{id:'t4',s:'🔺',n:'Szekrény-piramis (mini)',d:'Alumínium regenerációs piramis az öltözőszekrénybe. Edzés alatt a ruháid pihennek, utána te.',p:'24 900 Ft',o:'',st:'Előrendelhető',low:false,r:5,rc:37,rb:'ÚJDONSÁG'},
-{id:'t5',s:'🕯️',n:'„Bulk Nº7” tömegelő füstölő',d:'Fahéj, birsalma és izzadt bőr jegyei. A konyhában égetve az étvágyat a helyes irányba tereli.',p:'3 290 Ft',o:'',st:'Raktáron',low:false,r:4,rc:64,rb:''},
-{id:'t6',s:'👁️',n:'Hórusz-szemű övcsat',d:'Emelőövre csatolható lapka. A hátsó láncot védi az ártó tekintettől — főleg nyilvános maximumnál.',p:'15 900 Ft',o:'',st:'Utolsó darab',low:true,r:5,rc:29,rb:''}];
-function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n)}
-$('#shop').innerHTML=PROD.map(function(p){
-  var img=KEPEK.termek[p.id];
-  return '<div class="prod"><div class="pimg"><span class="psym">'+p.s+'</span>'+
-   (img?'<img src="'+img+'" alt="" onerror="this.remove()">':'')+
-   (p.rb?'<span class="ribbon">'+p.rb+'</span>':'')+'</div><div class="pbody"><h4>'+p.n+'</h4>'+
-   '<div class="stars5">'+stars(p.r)+'<em>('+p.rc+')</em></div>'+
-   '<p class="d">'+p.d+'</p>'+
-   '<div class="price">'+(p.o?'<s>'+p.o+'</s>':'')+p.p+'</div>'+
-   '<div class="stock'+(p.low?' low':'')+'">'+p.st+'</div>'+
-   '<button class="btn sm" data-buy>Kosárba</button></div></div>';
-}).join('');
-
-/* ===== VÉLEMÉNYEK (kitalált szereplők) ===== */
-var REV=[
-{w:'Kovács Bendegúz',t:'2 hete',r:5,x:'Két hete hordom a szekrénykulcson. Azóta egyszer sem felejtettem otthon a cipőt, és a fekvenyomásom is ment 2,5 kilót. Lehet véletlen, de nekem nem az.'},
-{w:'Halmi Renáta',t:'3 hete',r:5,x:'Előtte minden lábnapot elhalasztottam. Most már csak minden másodikat. Ez nálam áttörés.'},
-{w:'B. Zsolt',t:'1 hónapja',r:4,x:'A talizmán rendben, de a karikagyűrűvel összekoccan és csörög az egész terem. Külön karikára tettem, azóta tökéletes. Egy csillag levonva a csörgésért.'},
-{w:'Tóth-Almási Kinga',t:'1 hónapja',r:5,x:'A férjem nevetett rajta, aztán kért egyet magának is. Most ketten nevetünk, csak ő halkabban.'},
-{w:'Vincze Ottó',t:'2 hónapja',r:3,x:'Nem tudom megítélni a hatását, mert ugyanabban a hónapban kezdtem el rendesen aludni. Az egyik biztosan segített.'},
-{w:'Sárközi Melánia',t:'2 hónapja',r:5,x:'A szaunapadi ártó tekintet ellen vettem. Azóta is néznek, de már nem zavar. Ha ez a talizmán műve, megérte.'},
-{w:'Nagy Krisztián',t:'3 hónapja',r:5,x:'Harmadik hete viselem, és a gépfoglaló fantom eltűnt a teremből. (Kiderült, hogy elköltözött, de a talizmán ott volt, amikor történt.)'}];
-$('#reviews').innerHTML=REV.map(function(r){
-  return '<div class="rev"><div class="top"><span class="who">'+r.w+'</span><span class="stars5">'+stars(r.r)+'</span>'+
-   '<span class="ok">IGAZOLT VÁSÁRLÁS</span><span class="when">'+r.t+'</span></div><p>'+r.x+'</p></div>';
-}).join('')+'<p style="font-size:12.5px;color:var(--dim);margin-top:14px;border-top:1px dotted rgba(198,163,92,.2);padding-top:12px">A fenti vélemények kitaláltak, ahogy a termék is. Ez egy szatirikus oldal.</p>';
-
-/* ===== KRÓNIKÁK ===== */
-var CHR=[
-{l:'182,5',u:'KG FELHÚZÁS',n:'Deme Bálint, 34',x:'Négy évig nem tudta átvinni a 180-at. Aztán abbahagyta a napi mérlegelést, és két hónap múlva véletlenül megcsinálta. Azt mondja, a mérleg vitte el az erejét. Valószínűbb, hogy az alvás hozta vissza.'},
-{l:'62,5',u:'KG FEKVENYOMÁS',n:'Papp-Szűcs Anita, 41',x:'Két gyerek mellett heti kétszer edz, tizennégy hónapja ugyanazzal a programmal. Soha nem cserélt gyakorlatot. A szentély szerint ez a legerősebb varázslat, amit ismerünk.'},
-{l:'140',u:'KG GUGGOLÁS',n:'Ihász Ferenc, 58',x:'Ötvenhat évesen kezdte. Az első hónapban üres rúddal. Most a terem legidősebb tagja, és a legfiatalabbakat várja meg a lehúzásnál. Azt mondja, nem az erő fogy el a korral, hanem a türelem.'},
-{l:'0',u:'KG, KÉT HÉTIG',n:'Rácz Domonkos, 27',x:'Vállsérülés után két hétig nem emelt semmit. A krónika azért jegyzi fel, mert ez volt élete legnehezebb két hete, és utána jött a legjobb féléve. A deload nem büntetés.'}];
-$('#chron').innerHTML=CHR.map(function(c){
-  return '<div class="story"><div class="lift">'+c.l+' <small>'+c.u+'</small></div><h4>'+c.n+'</h4><p>'+c.x+'</p></div>';
-}).join('');
-
-/* ===== interakciók (semmi nem küld adatot sehova) ===== */
-document.addEventListener('click',function(e){
-  var b=e.target.closest('[data-buy]');
-  if(b){e.preventDefault();toast('Ez egy vicc-oldal — nincs kosár, nincs rendelés, nem árulunk semmit.');return;}
-  var f=e.target.closest('[data-fake]');
-  if(f){e.preventDefault();toast('Ez a menüpont nem létezik. Az oldal szatíra.');return;}
-});
-$('#nlBtn').addEventListener('click',function(){
-  toast('Nincs hírlevél és nincs adatbázis — a beírt cím sehova nem került el.');
-  $('#nlMail').value='';
-});
-$('#fBtn').addEventListener('click',function(){
-  var n=$('#fName').value.trim()||'Névtelen kereső';
-  var seed=0;for(var i=0;i<n.length;i++)seed+=n.charCodeAt(i)*(i+3);
-  var L=LAPOK[hash(seed)%LAPOK.length];
-  var el=['Tűz','Föld','Levegő','Víz'][hash(seed+11)%4];
-  $('#fOut').innerHTML='<b style="color:var(--gold-hi)">'+n+'</b> erőházának ura: <b style="color:var(--gold-hi)">'+L.r+' '+L.n+'</b>. '+
-    'Uralkodó elem: '+el+'. Kulcsszavak: '+L.k.join(', ')+'.<br><span style="color:var(--amber)">A képlet a nevedből számolt véletlen — az oldal szatíra, semmit nem mentünk el.</span>';
-});
-$('#ckOk').addEventListener('click',function(){$('#cookie').style.display='none'});
-$('#ckMore').addEventListener('click',function(e){e.preventDefault();$('#cookie').style.display='none';
-  document.querySelector('.fake').scrollIntoView({behavior:'smooth'})});
-$('#burger').addEventListener('click',function(){$('#nav').classList.toggle('open')});
-document.querySelectorAll('nav.main a').forEach(function(a){a.addEventListener('click',function(){$('#nav').classList.remove('open')})});
-</script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

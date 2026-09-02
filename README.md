@@ -1,20 +1,32 @@
-# Anubisz Vaskapuja - vastarot es erohoroszkop
+# Anubisz Vaskapuja — Erőezotéria és Vastarot Intézet
 
-Szatirikus, nem kereskedelmi weboldal. Statikus HTML, nincs backend, nincs adatgyujtes.
+Szatirikus, nem kereskedelmi weboldal: az edzőtermi bro-science és az ezoterikus jóslás
+totális összemosása. Statikus HTML, nincs backend, nincs adatgyűjtés, semmi sem eladó.
 
 ## Szerkezet
 
-index.html
-kepek/ 00.jpg ... 21.jpg (a 22 lap), hat.jpg (kartyahat),
-       talizman.jpg magnezia.jpg karkoto.jpg piramis.jpg fustolo.jpg ovcsat.jpg
+    index.html      – az oldal váza (szekciók)
+    css/style.css   – design (obsidian / arany / csont paletta)
+    js/data.js      – MINDEN szöveg és tartalom: lapok, horoszkóp, rontások, bolt, orákulum-szókészlet…
+    js/app.js       – logika (vetés, orákulum, szkenner, aura-főkönyv, naptár…)
+    kepek/          – a 22 lap eredeti PNG-je (00–21, nagy felbontás)
+    kepek/web/      – ugyanezek webre optimalizálva (JPG, ~130 KB/db) – az oldal EZEKET használja
 
-Ha egy kep hianyzik, az oldal a beepitett szimbolumos lapot mutatja helyette.
+## Tartalom szerkesztése
 
-PNG eseten az index.html tetejen a KEPKITERJESZTES erteket ird at '.png'-re.
+Minden szöveg a `js/data.js`-ben van. Új rontás, termék, aura-tétel, GYIK-kérdés vagy
+orákulum-szó hozzáadásához elég ott bővíteni a megfelelő tömböt, kód nem kell hozzá.
 
-## Latogatasszamlalo
+Új lapkép: tedd a `kepek/` mappába `NN.png` néven, majd generáld újra a webes változatot:
 
-GoatCounter-regisztracio utan a </body> ele:
+    python -c "from PIL import Image;import glob,os;[Image.open(f).convert('RGB').resize((640,960)).save('kepek/web/'+os.path.basename(f)[:-4]+'.jpg','JPEG',quality=82,optimize=True) for f in glob.glob('kepek/*.png')]"
 
-    <script data-goatcounter="https://SAJATNEV.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+## Kipróbálás helyben
+
+    python -m http.server 8765
+
+majd http://localhost:8765
+
+## GitHub Pages
+
+Settings → Pages → Source: „Deploy from a branch”, branch: `main`, mappa: `/ (root)`.
