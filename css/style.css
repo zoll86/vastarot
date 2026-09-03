@@ -218,7 +218,7 @@ input.f::placeholder{color:var(--mute)}
 
 /* ---------- HOROSZKÓP ---------- */
 .zgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-.z{cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:16px 8px;text-align:center;background:rgba(0,0,0,.3);
+.z{cursor:pointer;border:1px solid var(--line);border-radius:12px;padding:8px 8px 12px;text-align:center;background:rgba(0,0,0,.3);
   transition:transform .45s var(--spring),background .25s,border-color .25s}
 .z:hover{transform:translateY(-5px);border-color:var(--gold);background:rgba(212,175,90,.1)}
 .z.active{background:linear-gradient(180deg,rgba(212,175,90,.28),rgba(110,88,184,.2));border-color:var(--gold-hi)}
