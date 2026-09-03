@@ -4,7 +4,7 @@
    ============================================================ */
 
 var KEPMAPPA = 'kepek/web/';
-var KEPKITERJESZTES = '.jpg'; var ZODMAPPA = 'kepek/zodiak/web/'; var ZODKITERJESZTES = '.jpg';
+var KEPKITERJESZTES = '.jpg'; var ZODMAPPA = 'kepek/web/'; var ZODKITERJESZTES = '.jpg';
 
 /* ---------- TICKER ---------- */
 var TICKER = [
