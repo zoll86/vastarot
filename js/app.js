@@ -182,12 +182,12 @@ $('#oout').innerHTML='<div class="q">„'+esc(oracleLine())+'”</div><div class
   var zg=$('#zgrid');var wk=Math.floor(now.getTime()/604800000);
   ZOD.forEach(function(z,i){
     var d=document.createElement('div');d.className='z';
-    d.innerHTML='<span class="sym">'+z.s+'</span><span class="nm">'+z.n+'</span><span class="dt">'+z.d+'</span>';
+    d.innerHTML=zodImg(z,'zpic')+'<span class="nm">'+z.n+'</span><span class="dt">'+z.d+'</span>';
     d.addEventListener('click',function(){
       $$('.z').forEach(function(e){e.classList.remove('active')});d.classList.add('active');
       var pw=55+hash(wk*13+i*7)%44;var L=LAPOK[hash(wk*29+i*11)%LAPOK.length];
       var out=$('#zout');
-      out.innerHTML='<h3>'+z.s+' '+z.n+'</h3><div class="sub">Heti erőelőrejelzés · elem: '+z.el+' · uralkodó bolygó: '+z.bo+' · '+now.getFullYear()+'. '+HO[now.getMonth()]+'</div>'+
+      out.innerHTML='<div class="zhead">'+zodImg(z,'zpic-big')+'<div><h3>'+z.s+' '+z.n+'</h3><div class="sub">Heti erőelőrejelzés · elem: '+z.el+' · uralkodó bolygó: '+z.bo+' · '+now.getFullYear()+'. '+HO[now.getMonth()]+'</div></div></div>'+
         '<div class="zline"><span>Üzenet</span><span>'+esc(z.t)+'</span></div>'+
         '<div class="zline"><span>Uralkodó izom</span><span>'+esc(z.iz)+'</span></div>'+
         '<div class="zline"><span>Kedvező</span><span>'+esc(z.g)+'</span></div>'+
