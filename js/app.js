@@ -84,7 +84,7 @@ function countUp(el,to,dur){
 })();
 
 /* ---------- kártyák ---------- */
-function imgPath(i){return KEPMAPPA+(i<10?'0':'')+i+KEPKITERJESZTES}
+function imgPath(i){return KEPMAPPA+(i<10?'0':'')+i+KEPKITERJESZTES} function zodPath(z){return ZODMAPPA+z.k+ZODKITERJESZTES} function zodImg(z,cls){return '<span class="'+cls+'"><img src="'+zodPath(z)+'" alt="'+esc(z.n)+'" loading="lazy" decoding="async" onerror="this.parentNode.innerHTML=this.getAttribute(\'data-fb\')" data-fb="'+esc(z.s)+'"></span>';}
 function backHTML(){return HATRAJZ}
 function cardHTML(lap,rev){
   var i=LAPOK.indexOf(lap);
