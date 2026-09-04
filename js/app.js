@@ -5,6 +5,18 @@
 (function(){
 'use strict';
 
+/* ---------- robusztusság: régi/telefonos böngészők ---------- */
+function safe(f){try{f()}catch(e){if(window.console)console.error('Vaskapu-blokk hiba:',e)}}
+if(!window.IntersectionObserver){
+  window.IntersectionObserver=function(cb){this.cb=cb};
+  window.IntersectionObserver.prototype.observe=function(t){var cb=this.cb,self=this;setTimeout(function(){cb([{isIntersecting:true,target:t}],self)},0)};
+  window.IntersectionObserver.prototype.unobserve=function(){};
+  window.IntersectionObserver.prototype.disconnect=function(){};
+}
+if(!Element.prototype.closest){Element.prototype.closest=function(s){var el=this;while(el&&el.nodeType===1){if(el.matches(s))return el;el=el.parentNode}return null}}
+if(!Element.prototype.matches){Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector}
+document.documentElement.className+=' js';
+
 /* ---------- segéd ---------- */
 var $=function(s,root){return (root||document).querySelector(s)};
 var $$=function(s,root){return [].slice.call((root||document).querySelectorAll(s))};
@@ -21,7 +33,7 @@ var now=new Date();
 var dayKey=now.getFullYear()*10000+(now.getMonth()+1)*100+now.getDate();
 
 /* ---------- csillagok + hullócsillag ---------- */
-(function(){
+safe(function(){
   var c=$('#stars');if(!c)return;
   for(var i=0;i<80;i++){var s=document.createElement('i');var z=Math.random()*2+1;
     s.style.width=z+'px';s.style.height=z+'px';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
@@ -38,16 +50,16 @@ var dayKey=now.getFullYear()*10000+(now.getMonth()+1)*100+now.getDate();
     c.appendChild(e);setTimeout(function(){e.remove()},3200);setTimeout(hull,3600+Math.random()*8000);
   }
   setTimeout(hull,1800);
-})();
+});
 
 /* ---------- ticker ---------- */
-(function(){
+safe(function(){
   var t=$('#tickerTrack');if(!t)return;
   var items=TICKER.slice();
   var lifted=fmt(1248913+hash(dayKey)%3000);
   items.unshift('Eddig '+lifted+' rontást vettünk le, ma '+(37+hash(dayKey+1)%140)+'-et');
   t.innerHTML=items.concat(items).map(function(x){return '<span>'+esc(x)+'</span>'}).join('');
-})();
+});
 
 /* ---------- dátum + hold ---------- */
 function moonPhase(d){var syn=29.530588853,ref=Date.UTC(2000,0,6,18,14);var days=(d.getTime()-ref)/86400000;var a=((days%syn)+syn)%syn;return a/syn;}
@@ -67,7 +79,7 @@ function countUp(el,to,dur){
     el.textContent=fmt(Math.round(from+(to-from)*e));if(p<1)requestAnimationFrame(step);}
   requestAnimationFrame(step);
 }
-(function(){
+safe(function(){
   var done=false;
   var io=new IntersectionObserver(function(en){
     en.forEach(function(x){if(x.isIntersecting&&!done){done=true;
@@ -75,13 +87,14 @@ function countUp(el,to,dur){
   },{threshold:.3});
   var s=$('#stats');if(s)io.observe(s);
   $('#statLifted').setAttribute('data-to',1248913+hash(dayKey)%3000);
-})();
+});
 
 /* ---------- reveal ---------- */
-(function(){
+safe(function(){
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08});
   $$('.rv').forEach(function(el){io.observe(el)});
-})();
+  setTimeout(function(){$$('.rv').forEach(function(el){el.classList.add('in')})},3500);
+});
 
 /* ---------- kártyák ---------- */
 function imgPath(i){return KEPMAPPA+(i<10?'0':'')+i+KEPKITERJESZTES} function zodPath(z){return ZODMAPPA+z.k+ZODKITERJESZTES} function zodImg(z,cls){return '<span class="'+cls+'"><img src="'+zodPath(z)+'" alt="'+esc(z.n)+'" loading="lazy" decoding="async" onerror="this.parentNode.innerHTML=this.getAttribute(\'data-fb\')" data-fb="'+esc(z.s)+'"></span>';}
@@ -89,13 +102,13 @@ function backHTML(){return HATRAJZ}
 function cardHTML(lap,rev){
   var i=LAPOK.indexOf(lap);
   var fb='<div class="fb"><div class="rn">'+lap.r+'</div><div class="sym">'+lap.s+'</div></div>';
-  return '<div class="inner"><img src="'+imgPath(i)+'" alt="'+esc(lap.n)+'" loading="lazy" onerror="this.parentNode.innerHTML=this.getAttribute(\'data-fb\')" data-fb="'+esc(fb)+'"></div>'+
+  return '<div class="inner"><img src="'+imgPath(i)+'" alt="'+esc(lap.n)+'" onerror="this.parentNode.innerHTML=this.getAttribute(\'data-fb\')" data-fb="'+esc(fb)+'"></div>'+
     '<div class="cap"><span class="cr">'+lap.r+'</span>'+esc(lap.n)+(rev?' <em>· fordítva</em>':'')+'</div>';
 }
 function drawCard(el,lap,rev){el.className='tcard'+(rev?' rev':'');el.innerHTML=cardHTML(lap,rev);}
 
 /* ---------- napi lap ---------- */
-(function(){
+safe(function(){
   var idx=hash(dayKey)%LAPOK.length,rev=hash(dayKey+7)%100<32,L=LAPOK[idx];
   drawCard($('#dayCard'),L,rev);
   drawCard($('#heroCard'),L,false);
@@ -106,7 +119,7 @@ function drawCard(el,lap,rev){el.className='tcard'+(rev?' rev':'');el.innerHTML=
   $('#dcMeta').innerHTML=(rev?'Fordított állás':'Egyenes állás')+' · elem: '+L.el+' · holdfázis: '+MOONS[mi][1].toLowerCase()+' · erőindex <b class="gold">'+ei+'/100</b> · kozmikus 1RM-módosító <b class="gold">'+(rev?'−':'+')+(1.25*(1+hash(dayKey+5)%4)).toString().replace('.',',')+' kg</b>';
   $('#dcKw').innerHTML=L.k.map(function(k){return '<span class="kw">'+esc(k)+'</span>'}).join('');
   $('#dcRit').innerHTML='<b>A nap szertartása</b>'+esc(L.rit)+'<div class="mute small" style="margin-top:6px">Kísérő kristály: '+esc(L.cr)+'</div>';
-})();
+});
 
 /* ---------- háromlapos vetés ---------- */
 var picked=[],order=[];
@@ -178,7 +191,7 @@ $('#oAgain').addEventListener('click',function(){$('#oq').value='';oracleAnswer(
 $('#oout').innerHTML='<div class="q">„'+esc(oracleLine())+'”</div><div class="src">A mai első kinyilatkoztatás · Forrás: <b>'+esc(pick(FORRAS,dayKey))+'</b></div>';
 
 /* ---------- horoszkóp ---------- */
-(function(){
+safe(function(){
   var zg=$('#zgrid');var wk=Math.floor(now.getTime()/604800000);
   ZOD.forEach(function(z,i){
     var d=document.createElement('div');d.className='z';
@@ -215,10 +228,10 @@ $('#oout').innerHTML='<div class="q">„'+esc(oracleLine())+'”</div><div class
     $('#ascOut').innerHTML='<b class="gold">'+esc(n)+'</b> vasaszcendense: <b class="gold">'+Z.s+' '+Z.n+'</b> · erőházának ura: <b class="gold">'+L.r+' '+esc(L.n)+'</b> · uralkodó elem: '+el+'.<br>'+
       'Ez azt jelenti, hogy a Nap-jegyed edzene, de az aszcendensed <i>'+esc(Z.b.toLowerCase())+'</i> ürüggyel nem hagyja. Kozmikus 1RM-módosítód: <b class="gold">'+(mod>=0?'+':'−')+String(Math.abs(mod)).replace('.',',')+' kg</b>. Kísérő kristály: '+esc(L.cr)+'.';
   });
-})();
+});
 
 /* ---------- rontásvizsgálat ---------- */
-(function(){
+safe(function(){
   var scanning=false;
   $('#scanBtn').addEventListener('click',function(){
     if(scanning)return;scanning=true;
@@ -249,7 +262,7 @@ $('#oout').innerHTML='<div class="q">„'+esc(oracleLine())+'”</div><div class
     var b=CHAKRA[blocked];
     $('#chOut').innerHTML='<b class="gold">Blokkolt csakra: '+b.n+' ('+b.m+').</b> '+esc(b.t)+'<div class="ritual" style="margin-top:12px"><b>Feloldás</b>'+esc(b.cure)+'</div><p class="mute small" style="margin:10px 0 0">A korona-csakra (bicepsz) '+(100+Math.floor(Math.random()*60))+'%-on áll. Ez nem hiba, hanem diagnózis.</p>';
   });
-})();
+});
 
 /* ---------- vastörvények ---------- */
 $('#tenets').innerHTML=TENETS.map(function(t,i){
@@ -257,7 +270,7 @@ $('#tenets').innerHTML=TENETS.map(function(t,i){
 }).join('');
 
 /* ---------- aura ---------- */
-(function(){
+safe(function(){
   var led=$('#ledger');
   led.innerHTML=AURA.map(function(a,i){
     return '<label class="li"><input type="checkbox" data-v="'+a.v+'"><span class="t">'+esc(a.t)+'</span><span class="v '+(a.v>0?'plus':'minus')+'">'+(a.v>0?'+':'−')+fmt(Math.abs(a.v))+'</span></label>';
@@ -271,7 +284,7 @@ $('#tenets').innerHTML=TENETS.map(function(t,i){
     orb.style.opacity=Math.min(1,.35+Math.abs(sum)/8000);
   }
   led.addEventListener('change',calc);calc();
-})();
+});
 
 /* ---------- akadémia ---------- */
 $('#courses').innerHTML=COURSES.map(function(c){
@@ -301,7 +314,7 @@ $('#reviews').innerHTML=REV.map(function(r){
 }).join('');
 
 /* ---------- naptár ---------- */
-(function(){
+safe(function(){
   var DOW=['H','K','Sze','Cs','P','Szo','V'];var cy=now.getFullYear(),cm=now.getMonth(),sel=null;
   function verdict(y,m,d){
     var ph=moonPhase(new Date(y,m,d,12));
@@ -325,7 +338,7 @@ $('#reviews').innerHTML=REV.map(function(r){
   $('#prev').addEventListener('click',function(){cm--;if(cm<0){cm=11;cy--}build()});
   $('#next').addEventListener('click',function(){cm++;if(cm>11){cm=0;cy++}build()});
   build();
-})();
+});
 
 /* ---------- glosszárium, gyik, legolvasottabb ---------- */
 $('#gloss').innerHTML=GLOSS.map(function(g){return '<div class="gl rv"><b>'+esc(g.n)+'</b><span>'+esc(g.t)+'</span></div>'}).join('');
@@ -350,7 +363,7 @@ $('#curseShare').addEventListener('click',function(){
   share('Rontásvizsgálat eredménye: '+$('#curseName').textContent+' ('+$('#sev').textContent+'). Ellenszer: '+$('#curseCure').textContent.replace('Ellenszer: ','')+' — Anubisz Vaskapuja','diagnosztika');
 });
 /* vetés megosztása: a reading végére gomb */
-(function(){
+safe(function(){
   var orig=interpret;
   interpret=function(){
     orig();
@@ -363,12 +376,12 @@ $('#curseShare').addEventListener('click',function(){
       share('A heti vetésem: '+names[0]+' · '+names[1]+' · '+names[2]+'. '+$('.verdict',r).textContent.replace('Az együttállás: ','')+' — Anubisz Vaskapuja','vetes');
     });
   };
-})();
+});
 
 /* ---------- modal ---------- */
 function openModal(id){$('#'+id).classList.add('on');document.body.style.overflow='hidden'}
 function closeModals(){$$('.modal').forEach(function(m){m.classList.remove('on')});document.body.style.overflow='';
-  if(location.hash.indexOf('#lap-')===0)history.replaceState(null,'',location.pathname+location.search)}
+  if(location.hash.indexOf('#lap-')===0){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}}
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape')closeModals();
   if($('#lapModal').classList.contains('on')){if(e.key==='ArrowRight')showLap((curLap+1)%22);if(e.key==='ArrowLeft')showLap((curLap+21)%22);}
@@ -392,7 +405,7 @@ function showLap(i){
   $('#lapPrev').addEventListener('click',function(){showLap((i+21)%22)});
   $('#lapNext').addEventListener('click',function(){showLap((i+1)%22)});
   $('#lapShare').addEventListener('click',function(){share(L.r+' '+L.n+' — „'+L.u.split('. ')[0]+'.” Vastarot, Anubisz Vaskapuja','lap-'+i)});
-  history.replaceState(null,'',location.pathname+location.search+'#lap-'+i);
+  try{history.replaceState(null,'',location.pathname+location.search+'#lap-'+i)}catch(e){}
   openModal('lapModal');
   $('#lapModal .box').scrollTop=0;
 }
@@ -404,7 +417,7 @@ $('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gc
 (function(){var m=location.hash.match(/^#lap-(\d+)$/);if(m){var i=parseInt(m[1],10);if(i>=0&&i<22)setTimeout(function(){showLap(i)},300)}})();
 
 /* ---------- kvíz ---------- */
-(function(){
+safe(function(){
   var box=$('#quiz'),step=0,score=[];
   function reset(){step=0;score=[];for(var i=0;i<22;i++)score.push(0);render();}
   function render(){
@@ -434,10 +447,10 @@ $('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gc
     $('#qAgain').addEventListener('click',reset);
   }
   reset();
-})();
+});
 
 /* ---------- tárcsa-numerológia ---------- */
-(function(){
+safe(function(){
   function digitSum(n){var s=String(n).replace(/[^0-9]/g,'').split('').reduce(function(a,b){return a+parseInt(b,10)},0);return s}
   function toLap(kg){var s=digitSum(kg);while(s>21)s=digitSum(s);return s}
   function fmtKg(k){return String(Math.round(k*100)/100).replace('.',',')}
@@ -456,10 +469,10 @@ $('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gc
   }
   $('#numBtn').addEventListener('click',run);
   $('#numIn').addEventListener('keydown',function(e){if(e.key==='Enter')run()});
-})();
+});
 
 /* ---------- oklevél ---------- */
-(function(){
+safe(function(){
   $('#certRank').innerHTML=DIPLOMA.map(function(d){return '<option>'+esc(d)+'</option>'}).join('');
   var lastName='',lastRank='';
   function make(){
@@ -479,10 +492,10 @@ $('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gc
   $('#certName').addEventListener('keydown',function(e){if(e.key==='Enter')make()});
   $('#certPrint').addEventListener('click',function(){window.print()});
   $('#certShare').addEventListener('click',function(){share(lastName+' a mai naptól hivatalosan '+lastRank+' — az Anubisz Vaskapuja Erőezotéria és Vastarot Intézet oklevelével.','akademia')});
-})();
+});
 
 /* ---------- aktív nav + vissza a tetejére + logó ---------- */
-(function(){
+safe(function(){
   var links=$$('nav.main a'),map={};
   links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.remove('active')});var a=map[x.target.id];if(a)a.classList.add('active')}})},{rootMargin:'-30% 0px -60% 0px'});
@@ -493,7 +506,7 @@ $('#gallery').addEventListener('keydown',function(e){var g=e.target.closest('.gc
   var clicks=0;$('.mark').addEventListener('click',function(){clicks++;if(clicks===5){toast('Ötször érintetted az ankh-ot. A Kapuőr feljegyezte: beavatott vagy. Mind meg fogjuk csinálni.');clicks=0;}});
   /* billentyűzet a jegyekhez és a paklihoz */
   $$('.z').forEach(function(z){z.setAttribute('role','button');z.setAttribute('tabindex','0');z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();z.click()}})});
-})();
+});
 
 /* ---------- interakciók ---------- */
 document.addEventListener('click',function(e){

@@ -421,9 +421,26 @@ footer.site{border-top:1px solid var(--line);background:#07060a;padding:44px 0 3
 
 .count{font-variant-numeric:tabular-nums}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rv.in{opacity:1;transform:none}
+/* reveal (csak ha fut a JS) */
+html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .rv.in{opacity:1;transform:none}
+
+/* régi böngészők: aspect-ratio nélkül */
+@supports not (aspect-ratio:1/1){
+  .tcard{height:calc(var(--card-w) * 1.675)}
+  .tcard .inner{min-height:calc(var(--card-w) * 1.4)}
+  .gcard{height:auto}
+  .gcard img{height:auto}
+  .pimg{min-height:200px}
+  .day{height:42px}
+  .ch .dot{height:38px}
+}
+/* flex-gap nélküli böngészők */
+@supports not (gap:1px){
+  .hero .cta>*{margin:0 12px 12px 0}
+  .share>*{margin:0 8px 8px 0}
+  .spread>*{margin:0 13px 26px}
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1060px){
