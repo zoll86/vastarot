@@ -43,10 +43,10 @@
       <a href="#horoszkop">Horoszkóp</a>
       <a href="#diagnosztika">Diagnosztika</a>
       <a href="#vastorveny">Vastörvények</a>
+      <a href="#kerek">Kerék</a>
       <a href="#aura">Aura</a>
       <a href="#akademia">Akadémia</a>
       <a href="#bolt">Bolt</a>
-      <a href="#tudomany">Tudomány</a>
     </nav>
   </div>
 </header>
@@ -242,6 +242,33 @@
     <h2 class="title">Amit az ősök tudtak, csak nem volt hozzá övük</h2>
     <p class="lead">Az emberi DNS két és fél millió éve emel. Az Intézet kilenc ősi törvényben foglalta össze, mit csinált az ősember a barlangban, és mit kellene csinálnod neked a teremben. Nagyjából ugyanazt, csak gravírozott tárcsával.</p>
     <div class="tenets" id="tenets" style="text-align:left"></div>
+  </div>
+</section>
+
+<!-- LÁBNAP-SZERENCSEKERÉK -->
+<section id="kerek">
+  <div class="wrap">
+    <div class="eyebrow">Sorsvetés · a Kapuőr kereke</div>
+    <h2 class="title">Lábnap-kihagyó szerencsekerék</h2>
+    <p class="lead">Az Intézet egyetlen hivatalos eszköze a lábnap kihagyására. A keréken tizenkét mező van, köztük egy Szabadnap. A kerék 1351 óta forog, és a Szabadnap mezőn eddig egyszer sem állt meg — de a lehetőség elméletileg fennáll, és az Intézet szerint az elmélet is rezgés.</p>
+    <div class="wheelwrap">
+      <div class="wheelbox">
+        <div class="ptr"></div>
+        <svg viewBox="0 0 400 400" id="wheelSvg"><g class="ring" id="wheelRing"></g></svg>
+        <div class="hub">☥</div>
+      </div>
+      <div>
+        <button class="btn" id="spinBtn">Pörgetem a sorsot</button>
+        <div class="wheelout" id="wheelOut" style="margin-top:18px">
+          <p class="mute" style="font-size:15px">A kerék várja a kezedet. A lábnap is.</p>
+        </div>
+        <div class="wheelstat">
+          <div><b id="spinCount">0</b>pörgetés</div>
+          <div><b id="skipCount">0</b>kihagyott lábnap</div>
+          <div><b id="nearCount">0</b>egy fokkal mellé</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

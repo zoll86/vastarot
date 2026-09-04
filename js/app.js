@@ -494,6 +494,57 @@ safe(function(){
   $('#certShare').addEventListener('click',function(){share(lastName+' a mai naptól hivatalosan '+lastRank+' — az Anubisz Vaskapuja Erőezotéria és Vastarot Intézet oklevelével.','akademia')});
 });
 
+/* ---------- lábnap-szerencsekerék ---------- */
+safe(function(){
+  var N=KEREK.length,SEG=360/N,R=196,CX=200,CY=200;
+  var ring=$('#wheelRing');
+  function pt(a,r){var t=(a-90)*Math.PI/180;return [CX+r*Math.cos(t),CY+r*Math.sin(t)]}
+  var html='';
+  KEREK.forEach(function(k,i){
+    var a0=i*SEG,a1=(i+1)*SEG,p0=pt(a0,R),p1=pt(a1,R);
+    var fill=k.free?'url(#wgold)':(i%2?'#1b1826':'#231d33');
+    html+='<path d="M'+CX+' '+CY+' L'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+' A'+R+' '+R+' 0 0 1 '+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' Z" fill="'+fill+'" stroke="#d4af5a" stroke-opacity=".55" stroke-width="1"/>';
+    var mid=a0+SEG/2,tp=pt(mid,R*0.93);
+    html+='<text x="'+tp[0].toFixed(1)+'" y="'+tp[1].toFixed(1)+'" transform="rotate('+mid+' '+tp[0].toFixed(1)+' '+tp[1].toFixed(1)+')" text-anchor="end" dominant-baseline="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-size="'+(k.t.length>14?'11':'13')+'" letter-spacing="1.2" fill="'+(k.free?'#1d1405':'#f3dfa0')+'" font-weight="600">'+esc(k.t)+'</text>';
+  });
+  ring.innerHTML='<defs><radialGradient id="wgold" cx="50%" cy="50%"><stop offset="0%" stop-color="#f7e7b5"/><stop offset="100%" stop-color="#c9a24e"/></radialGradient></defs><circle cx="200" cy="200" r="199" fill="#0d0b14" stroke="#d4af5a" stroke-width="2"/>'+html+'<circle cx="200" cy="200" r="199" fill="none" stroke="#f3dfa0" stroke-opacity=".5" stroke-width="1"/>';
+  var rot=0,spins=0,near=0,busy=false;
+  try{spins=parseInt(localStorage.getItem('vk_spins')||'0',10)||0;near=parseInt(localStorage.getItem('vk_near')||'0',10)||0}catch(e){}
+  function stat(){$('#spinCount').textContent=spins;$('#nearCount').textContent=near;$('#skipCount').textContent='0';try{localStorage.setItem('vk_spins',spins);localStorage.setItem('vk_near',near)}catch(e){}}
+  stat();
+  /* A mutató a tetején áll. rotate(+R) esetén a mutató alatt az a szegmens van, amelyik az (360 - R mod 360) foknál kezdődik. */
+  function spinTo(a,turns){var targetR=(360-(a%360)+360)%360;var cur=((rot%360)+360)%360;rot=rot+turns*360+((targetR-cur)+360)%360;ring.style.transform='rotate('+rot+'deg)';}
+  $('#spinBtn').addEventListener('click',function(){
+    if(busy)return;busy=true;spins++;
+    var out=$('#wheelOut');out.innerHTML='<p class="mute" style="font-size:15px">A kerék forog. A Kapuőr számol.</p>';
+    /* célszegmens sosem a 0 (SZABADNAP). 45%: „egy fokkal mellé” (a Szabadnap két szomszédjának széle). 30%: először a Szabadnapra áll, aztán a Kapuőr visszatolja. */
+    var r=Math.random(),tease=r<0.45,fake=!tease&&r<0.75,seg,within,turns=6+Math.floor(Math.random()*3);
+    if(tease){if(Math.random()<0.5){seg=1;within=0.8+Math.random()*1.4}else{seg=N-1;within=SEG-0.8-Math.random()*1.4}}
+    else{seg=1+Math.floor(Math.random()*(N-1));within=3+Math.random()*(SEG-6)}
+    ring.classList.remove('nudge');
+    if(fake){
+      spinTo(SEG/2+(Math.random()*6-3),turns);
+      setTimeout(function(){
+        out.innerHTML='<div class="res free">SZABADNAP?</div><p class="mute" style="font-size:15px">A kerék megállt. A Kapuőr még nem.</p>';
+        setTimeout(function(){
+          ring.classList.add('nudge');rot-= SEG/2+2+Math.random()*4;ring.style.transform='rotate('+rot+'deg)';
+          setTimeout(function(){finish(1,'A Kapuőr visszatolta. Nem ő tehet róla: a kerék a lábnapé.')},500);
+        },1000);
+      },5400);
+    }else{
+      spinTo(seg*SEG+within,turns);
+      setTimeout(function(){finish(seg,tease?KEREK_UZENET[Math.min(near,KEREK_UZENET.length-1)]:null)},5400);
+    }
+    function finish(seg,note){
+      var k=KEREK[seg];if(note)near++;stat();
+      out.innerHTML='<div class="res">'+esc(k.t)+'</div><p style="font-size:15.5px;margin:0 0 8px">'+esc(k.v)+'</p>'+(note?'<div class="ritual"><b>A Kapuőr megjegyzése</b>'+esc(note)+'</div>':'')+
+        '<div class="share"><button class="btn ghost sm" id="wheelShare">Megosztom az eredményt</button></div>';
+      $('#wheelShare').addEventListener('click',function(){share('A lábnap-kihagyó szerencsekerék szerint: '+k.t+'. '+(note||k.v)+' Próbáld meg te is, hátha. ('+spins+'. pörgetés, kihagyott lábnap: 0)','kerek')});
+      busy=false;
+    }
+  });
+});
+
 /* ---------- aktív nav + vissza a tetejére + logó ---------- */
 safe(function(){
   var links=$$('nav.main a'),map={};

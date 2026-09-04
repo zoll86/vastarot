@@ -490,3 +490,31 @@ var DIPLOMA=[
  'Rontáslevételi Szakreferens','A Lábnap Lovagja','Kvantum-fehérje Sommelier','Anubisz Kiválasztottja'
 ];
 var NUM_JO=[4,8,17,19,21,3,11];
+
+/* ---------- LÁBNAP-SZERENCSEKERÉK ---------- */
+var KEREK=[
+{t:'SZABADNAP',free:true,v:'Ez a mező elméletben létezik. A kerék még sosem állt meg rajta, és az Intézet szerint ez nem hiba, hanem a kerék jelleme.'},
+{t:'LÁBNAP',v:'Lábnap. A kerék pontosan azt mondta, amit a naptárad, csak forgott közben.'},
+{t:'DUPLA LÁBNAP',v:'Kettő. A kerék úgy érezte, az első nem volt elég meggyőző.'},
+{t:'LÁBNAP + VÁDLI',v:'Lábnap, plusz a vádli, amit egyébként is kihagytál volna. A kerék emlékszik.'},
+{t:'GUGGOLÁS 5×5',v:'Öt sorozat, öt ismétlés, nulla kifogás. A kerék klasszikus.'},
+{t:'LÁBNAP',v:'Lábnap. A kerék nem ismétli magát; a lábnap ismétli magát.'},
+{t:'BOLGÁR GUGGOLÁS',v:'Bolgár guggolás. A kerék nem bolgár, de tudja, mi fáj.'},
+{t:'LÁBNAP (FORDÍTVA)',v:'Fordított lábnap: ugyanaz, csak előbb a vádli. A kerék humoros kedvében van.'},
+{t:'KIHAGYHATOD*',v:'*A kihagyás a következő lábnapig érvényes. A következő lábnap most van. A csillag a kerék jogásza.'},
+{t:'LÁBNAP',v:'Lábnap. Ha még egyszer pörgetsz, az is lábnap lesz, csak később.'},
+{t:'LEGPRESS 20 ISM',v:'Húsz ismétlés a lábtolón. A kerék kegyes volt: ülhetsz közben.'},
+{t:'LÁBNAP HAJNALBAN',v:'Lábnap, hajnali hatkor, a Remete lámpája alatt. A kerék korán kel.'}
+];
+var KEREK_UZENET=[
+ 'Egy fokkal mellé. A Kapuőr így számolta.',
+ 'A kerék a Kapuőré. A Kapuőr a lábnapé.',
+ 'Anubisz jegyzetel. Nem szól, csak jegyzetel.',
+ 'A kerék nem hibás. A lábnap az.',
+ 'Ötödik pörgetés. A kerék már ismer téged.',
+ 'A szabadnap mező látszik, tehát létezik. Ennyi a garancia.',
+ 'A statisztika szerint a hetedik pörgetés a szerencsés. A kerék nem olvas statisztikát.',
+ 'Nyolc. A vádlid ez alatt az idő alatt megnőhetett volna.',
+ 'Kilencedik. A kerék tiszteli a kitartásodat, és nem érdekli.',
+ 'Tíz pörgetés. Az már egy lábnap volt, csak ülve.'
+];
